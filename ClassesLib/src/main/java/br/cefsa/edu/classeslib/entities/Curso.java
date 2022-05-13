@@ -11,32 +11,16 @@ package br.cefsa.edu.classeslib.entities;
 public class Curso {
     private int id;
     private String nome;
-    private int duracaoSemestre;
+    private int quantidadePeriodos;
     private Pessoa coordenador;
 
     public Curso() {
     }
 
-    public Curso(int id, String nome, int duracaoSemestre, Pessoa coordenador) {
+    public Curso(int id, String nome, int quantidadePeriodos, Pessoa coordenador) {
         this.id = id;
         this.nome = nome;
-        this.duracaoSemestre = duracaoSemestre;
-        this.coordenador = coordenador;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setDuracaoSemestre(int duracaoSemestre) {
-        this.duracaoSemestre = duracaoSemestre;
-    }
-
-    public void setCoordenador(Pessoa coordenador) {
+        this.quantidadePeriodos = quantidadePeriodos;
         this.coordenador = coordenador;
     }
 
@@ -44,16 +28,32 @@ public class Curso {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    public int getDuracaoSemestre() {
-        return duracaoSemestre;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQuantidadePeriodos() {
+        return quantidadePeriodos;
+    }
+
+    public void setQuantidadePeriodos(int quantidadePeriodos) {
+        this.quantidadePeriodos = quantidadePeriodos;
     }
 
     public Pessoa getCoordenador() {
         return coordenador;
     }
-    
+
+    public void setCoordenador(Pessoa coordenador) {
+        this.coordenador = coordenador;
+    }
+
 }

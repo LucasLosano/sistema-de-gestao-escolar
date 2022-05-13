@@ -12,16 +12,18 @@ public class Materia {
     private int id;
     private String nome;
     private Curso curso;
-    private int semestre;
+    private int periodoLecionado;
+    private Professor professor;
 
     public Materia() {
     }
 
-    public Materia(int id, String nome, Curso curso, int semestre) {
+    public Materia(int id, String nome, Curso curso, int periodoLecionado, Professor professor) {
         this.id = id;
         this.nome = nome;
         this.curso = curso;
-        this.semestre = semestre;
+        this.periodoLecionado = periodoLecionado;
+        this.professor = professor;
     }
 
     public int getId() {
@@ -48,13 +50,21 @@ public class Materia {
         this.curso = curso;
     }
 
-    public int getSemestre() {
-        return semestre;
+    public int getPeriodoLecionado() {
+        return periodoLecionado;
     }
 
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
+    public void setPeriodoLecionado(int periodoLecionado) {
+        this.periodoLecionado = periodoLecionado;
     }
-    
-    
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+
 }

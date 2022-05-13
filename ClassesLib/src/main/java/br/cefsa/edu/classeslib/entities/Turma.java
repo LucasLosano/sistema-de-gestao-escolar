@@ -11,15 +11,15 @@ package br.cefsa.edu.classeslib.entities;
 public class Turma {
     private int id;
     private Curso curso;
-    private int semestre;
+    private int periodoAtual;
 
     public Turma() {
     }
 
-    public Turma(int id, Curso curso, int semestre) {
+    public Turma(int id, Curso curso, int periodoAtual) {
         this.id = id;
         this.curso = curso;
-        this.semestre = semestre;
+        this.periodoAtual = periodoAtual;
     }
 
     public int getId() {
@@ -38,13 +38,13 @@ public class Turma {
         this.curso = curso;
     }
 
-    public int getSemestre() {
-        return semestre;
+    public int getPeriodoAtual() {
+        return periodoAtual;
     }
 
-    public void setSemestre(int semestre) {
-        this.semestre = semestre;
+    public void setPeriodoAtual(int periodoAtual) {
+        this.periodoAtual = periodoAtual;
     }
-    
+
     
 }

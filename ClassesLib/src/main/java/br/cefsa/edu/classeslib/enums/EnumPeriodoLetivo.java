@@ -6,10 +6,12 @@ package br.cefsa.edu.classeslib.enums;
 
 /**
  *
- * @author rafael.pignatari
+ * @author rafae
  */
-public enum EnumRotuloPessoa {
-    Aluno,
-    Professor,
-    ProfessorCoordenador
+public enum EnumPeriodoLetivo {
+    Anual,
+    Semestre,
+    Quadrimestre,
+    Trimestre,
+    Bimestre
 }

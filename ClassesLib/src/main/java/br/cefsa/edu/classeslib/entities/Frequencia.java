@@ -4,29 +4,29 @@
  */
 package br.cefsa.edu.classeslib.entities;
 
-import br.cefsa.edu.classeslib.enums.EnumTipoNota;
+import java.util.Date;
 
 /**
  *
  * @author rafael.pignatari
  */
-public class Nota {
+public class Frequencia {
     private int id;
-    private EnumTipoNota tipoNota;
-    private float valor;
-    private Aluno aluno = new Aluno();
+    private Date data;
+    private boolean status;
     private Materia materia;
+    private Aluno aluno = new Aluno();
     private PeriodoLetivo periodo;
 
-    public Nota() {
+    public Frequencia() {
     }
 
-    public Nota(int id, EnumTipoNota tipoNota, float valor, Materia materia, PeriodoLetivo periodo) {
+    public Frequencia(int id, Materia materia, Date data, PeriodoLetivo periodo, boolean status) {
         this.id = id;
-        this.tipoNota = tipoNota;
-        this.valor = valor;
         this.materia = materia;
+        this.data = data;
         this.periodo = periodo;
+        this.status = status;
     }
 
     public int getId() {
@@ -35,22 +35,6 @@ public class Nota {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public EnumTipoNota getTipoNota() {
-        return tipoNota;
-    }
-
-    public void setTipoNota(EnumTipoNota tipoNota) {
-        this.tipoNota = tipoNota;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
     }
 
     public Aluno getAluno() {
@@ -69,6 +53,14 @@ public class Nota {
         this.materia = materia;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public PeriodoLetivo getPeriodo() {
         return periodo;
     }
@@ -77,4 +69,12 @@ public class Nota {
         this.periodo = periodo;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
 }

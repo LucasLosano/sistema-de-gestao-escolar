@@ -4,8 +4,6 @@
  */
 package br.cefsa.edu.classeslib.entities;
 
-import br.cefsa.edu.classeslib.enums.EnumRotuloPessoa;
-
 /**
  *
  * @author rafael.pignatari
@@ -17,22 +15,18 @@ public class Pessoa {
     private String telefone;
     private String rua;
     private String cidade;
-    private EnumRotuloPessoa rotulo;
 
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String email, String telefone, String rua, String cidade, EnumRotuloPessoa rotulo) {
+    public Pessoa(int id, String nome, String email, String telefone, String rua, String cidade) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.rua = rua;
         this.cidade = cidade;
-        this.rotulo = rotulo;
     }
-
-   
 
     public int getId() {
         return id;
@@ -82,15 +76,4 @@ public class Pessoa {
         this.cidade = cidade;
     }
 
-    public EnumRotuloPessoa getRotulo() {
-        return rotulo;
-    }
-
-    public void setRotulo(EnumRotuloPessoa rotulo) {
-        this.rotulo = rotulo;
-    }
-    
-    
-    
-    
 }
