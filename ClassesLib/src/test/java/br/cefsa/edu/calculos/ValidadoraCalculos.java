@@ -105,6 +105,15 @@ public class ValidadoraCalculos {
         Assertions.assertTrue(thrown.getMessage().contains("Todas as notas devem ser do mesmo aluno"));
     }
     
+     @Test
+    public void SeNotasForemMenorQueZeroOuMaiorQueDezEhEsperadoException() throws Exception {
+        notas[0].setValor(25);
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.CalculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
+        
+        Assertions.assertTrue(thrown.getMessage().contains("As notas devem ser maior que 0 e menor ou igual a 10"));
+    }
+    
     @Test
     public void SeNotasNaoPertencemAoMesmoTipoEhEsperadoException() throws Exception {
         notas[0].setTipoNota(EnumTipoNota.N2);
