@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefsa.edu.classeslib.entities;
 
-/**
- *
- * @author rafae
- */
 public class Configuracoes {
+
     private String nomeInstituicao;
     private PeriodoLetivo periodo;
     private double[] pesos = {2.5f, 2.5f, 2.5f, 2.5f};
@@ -75,5 +68,5 @@ public class Configuracoes {
     public void setLogoInstituicao(String logoInstituicao) {
         this.logoInstituicao = logoInstituicao;
     }
-    
+
 }

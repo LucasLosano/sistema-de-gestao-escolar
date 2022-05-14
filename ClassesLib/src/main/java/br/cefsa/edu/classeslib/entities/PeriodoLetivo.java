@@ -1,26 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefsa.edu.classeslib.entities;
 
 import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author rafae
- */
 public class PeriodoLetivo {
+
     private int id;
     private EnumPeriodoLetivo tipoPeriodo;
-    private Date dataInicio;
-    private Date dataFim;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 
     public PeriodoLetivo() {
     }
 
-    public PeriodoLetivo(int id, EnumPeriodoLetivo tipoPeriodo, Date dataInicio, Date dataFim) {
+    public PeriodoLetivo(int id, EnumPeriodoLetivo tipoPeriodo, LocalDate dataInicio, LocalDate dataFim) {
         this.id = id;
         this.tipoPeriodo = tipoPeriodo;
         this.dataInicio = dataInicio;
@@ -43,21 +36,20 @@ public class PeriodoLetivo {
         this.tipoPeriodo = tipoPeriodo;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 
-    
 }

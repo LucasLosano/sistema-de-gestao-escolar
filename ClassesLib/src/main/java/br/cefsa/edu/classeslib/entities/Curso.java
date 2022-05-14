@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefsa.edu.classeslib.entities;
 
-/**
- *
- * @author rafael.pignatari
- */
 public class Curso {
+
     private int id;
     private String nome;
     private int quantidadePeriodos;
@@ -22,7 +15,7 @@ public class Curso {
         this.nome = nome;
         this.quantidadePeriodos = quantidadePeriodos;
     }
-    
+
     public Curso(int id, String nome, int quantidadePeriodos, Pessoa coordenador) {
         this.id = id;
         this.nome = nome;
