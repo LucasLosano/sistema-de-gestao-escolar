@@ -34,7 +34,7 @@ public abstract class Calculos {
             throw new Exception("São necessários 4 pesos");
         
         if(Arrays.stream(pesos).anyMatch(peso -> peso == 0))
-            throw new Exception("O peso deve ser diferente de 0");
+            throw new Exception("Os pesos devem ser diferentes de 0");
         
         if(Arrays.stream(pesos).sum() != 1)
             throw new Exception("A soma dos pesos deve ser 1");
@@ -48,6 +48,9 @@ public abstract class Calculos {
         int alunoId = notas[0].getAluno().getId();
         if(!Arrays.stream(notas).allMatch(nota -> nota.getAluno().getId() == alunoId))  
             throw new Exception("Todas as notas devem ser do mesmo aluno");
+        
+        if(Arrays.stream(notas).anyMatch(nota -> nota.getValor() > 10 || nota.getValor() < 0))
+            throw new Exception("As notas devem ser maior que 0 e menor ou igual a 10");
         
         List<EnumTipoNota> notasPassadas = new ArrayList();
         notasPassadas.add(notas[0].getTipoNota());
