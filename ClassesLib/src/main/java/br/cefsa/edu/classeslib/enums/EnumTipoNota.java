@@ -12,6 +12,5 @@ public enum EnumTipoNota {
     N1,
     N2,
     N3,
-    N4,
-    Media
+    N4
 }

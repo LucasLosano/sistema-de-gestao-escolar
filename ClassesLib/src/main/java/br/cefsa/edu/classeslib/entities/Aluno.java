@@ -4,6 +4,9 @@
  */
 package br.cefsa.edu.classeslib.entities;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author rafae
@@ -25,6 +28,25 @@ public class Aluno extends Pessoa {
 
     public void setTurma(Turma turma) {
         this.turma = turma;
+    }
+
+    public double getMedia(Nota[]notas, double[] pesos) throws Exception {
+        if(notas.length > 4)
+            throw new Exception("São necessários menos de 4 notas");
+        
+        if(pesos.length != 4)
+            throw new Exception("São necessários 4 pesos");
+        
+        if(Arrays.stream(pesos).sum() != 1)
+            throw new Exception("A soma dos pesos deve ser 1");
+        
+        double media = 0;
+        for(int i = 0; i < notas.length; i++)
+        {
+            media += notas[i].getValor() * pesos[i];
+        }
+        
+        return media;
     }
     
 }

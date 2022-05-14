@@ -17,6 +17,12 @@ public class Curso {
     public Curso() {
     }
 
+    public Curso(int id, String nome, int quantidadePeriodos) {
+        this.id = id;
+        this.nome = nome;
+        this.quantidadePeriodos = quantidadePeriodos;
+    }
+    
     public Curso(int id, String nome, int quantidadePeriodos, Pessoa coordenador) {
         this.id = id;
         this.nome = nome;

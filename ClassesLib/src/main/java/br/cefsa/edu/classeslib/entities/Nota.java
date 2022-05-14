@@ -13,7 +13,7 @@ import br.cefsa.edu.classeslib.enums.EnumTipoNota;
 public class Nota {
     private int id;
     private EnumTipoNota tipoNota;
-    private float valor;
+    private float valor = 0;
     private Aluno aluno = new Aluno();
     private Materia materia;
     private PeriodoLetivo periodo;
