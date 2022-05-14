@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefsa.edu.classeslib.entities;
 
 import br.cefsa.edu.classeslib.enums.EnumTipoNota;
 
-/**
- *
- * @author rafael.pignatari
- */
 public class Nota {
+
     private int id;
     private EnumTipoNota tipoNota;
     private float valor = 0;
@@ -77,6 +70,5 @@ public class Nota {
     public void setPeriodo(PeriodoLetivo periodo) {
         this.periodo = periodo;
     }
-    
-    
+
 }

@@ -1,32 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.cefsa.edu.classeslib.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author rafael.pignatari
- */
 public class Frequencia {
+
     private int id;
-    private Date data;
+    private LocalDate data;
     private boolean status;
     private Materia materia;
-    private Aluno aluno = new Aluno();
+    private Aluno aluno;
     private PeriodoLetivo periodo;
 
     public Frequencia() {
     }
 
-    public Frequencia(int id, Materia materia, Date data, PeriodoLetivo periodo, boolean status) {
+    public Frequencia(int id, LocalDate data, boolean status, Materia materia, Aluno aluno, PeriodoLetivo periodo) {
         this.id = id;
-        this.materia = materia;
         this.data = data;
-        this.periodo = periodo;
         this.status = status;
+        this.materia = materia;
+        this.aluno = aluno;
+        this.periodo = periodo;
     }
 
     public int getId() {
@@ -37,12 +31,20 @@ public class Frequencia {
         this.id = id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Materia getMateria() {
@@ -53,12 +55,12 @@ public class Frequencia {
         this.materia = materia;
     }
 
-    public Date getData() {
-        return data;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
     public PeriodoLetivo getPeriodo() {
@@ -69,12 +71,4 @@ public class Frequencia {
         this.periodo = periodo;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-    
 }

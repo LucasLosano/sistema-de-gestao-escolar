@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.cefsa.edu.calculos.ValidadoraCalculos
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in br.cefsa.edu.calculos.ValidadoraCalculos
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 29.906 s <<< FAILURE! - in br.cefsa.edu.calculos.ValidadoraCalculos
+SeNotasDeAlunoEPesosSaoValidosEFatorFrequenciaAtivoCalculaMedia  Time elapsed: 29.843 s  <<< ERROR!
+java.lang.Exception: É necessário pelo menos 1 frequência
+	at br.cefsa.edu.calculos.ValidadoraCalculos.SeNotasDeAlunoEPesosSaoValidosEFatorFrequenciaAtivoCalculaMedia(ValidadoraCalculos.java:94)
+
