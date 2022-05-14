@@ -21,10 +21,11 @@ public class Nota {
     public Nota() {
     }
 
-    public Nota(int id, EnumTipoNota tipoNota, float valor, Materia materia, PeriodoLetivo periodo) {
+    public Nota(int id, EnumTipoNota tipoNota, float valor, Aluno aluno, Materia materia, PeriodoLetivo periodo) {
         this.id = id;
         this.tipoNota = tipoNota;
         this.valor = valor;
+        this.aluno = aluno;
         this.materia = materia;
         this.periodo = periodo;
     }
@@ -76,5 +77,6 @@ public class Nota {
     public void setPeriodo(PeriodoLetivo periodo) {
         this.periodo = periodo;
     }
-
+    
+    
 }
