@@ -25,13 +25,16 @@ public abstract class Calculos {
             media += notas[i].getValor() * pesos[i];
         }
         
-        return media;
+        return (double)Math.round(media * 100) / 100;
     }
     
     private static void ValidaPesos(double[] pesos) throws Exception
     {
         if(pesos.length != 4)
             throw new Exception("São necessários 4 pesos");
+        
+        if(Arrays.stream(pesos).anyMatch(peso -> peso == 0))
+            throw new Exception("O peso deve ser diferente de 0");
         
         if(Arrays.stream(pesos).sum() != 1)
             throw new Exception("A soma dos pesos deve ser 1");

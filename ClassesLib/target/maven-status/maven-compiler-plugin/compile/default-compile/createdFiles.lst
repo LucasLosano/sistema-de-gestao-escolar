@@ -1,7 +1,5 @@
-br\cefsa\edu\classeslib\entities\Aluno.class
 br\cefsa\edu\classeslib\entities\Configuracoes.class
 br\cefsa\edu\classeslib\entities\Materia.class
-br\cefsa\edu\classeslib\entities\Nota.class
 br\cefsa\edu\classeslib\entities\Frequencia.class
 br\cefsa\edu\classeslib\entities\Turma.class
 br\cefsa\edu\classeslib\enums\EnumTipoNota.class
@@ -10,3 +8,5 @@ br\cefsa\edu\classeslib\entities\PeriodoLetivo.class
 br\cefsa\edu\classeslib\entities\Professor.class
 br\cefsa\edu\classeslib\enums\EnumPeriodoLetivo.class
 br\cefsa\edu\classeslib\entities\Curso.class
+br\cefsa\edu\classeslib\entities\Aluno.class
+br\cefsa\edu\classeslib\entities\Nota.class
