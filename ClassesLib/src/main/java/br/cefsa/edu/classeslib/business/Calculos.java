@@ -49,8 +49,11 @@ public abstract class Calculos {
     }
 
     private static void validaNotas(Nota[] notas) throws Exception {
-        if (notas.length > 4 || notas.length == 0) {
-            throw new Exception(NotasException.ENTRE_UM_E_QUATRO);
+        if (notas.length == 0)
+            return;
+        
+        if (notas.length > 4) {
+            throw new Exception(NotasException.MAXIMO_QUATRO);
         }
 
         int alunoId = notas[0].getAluno().getId();
@@ -96,11 +99,17 @@ public abstract class Calculos {
     }
 
     private static double arredondaParaDuasCasas(double valor) {
-        return (double) Math.round(valor * 100) / 100;
+        return Math.round(valor * 100) / 100.0;
     }
 
     private static double calculaFatorFrequencia(Frequencia[] frequencias) {
-        double porcentagemFrequencia = (double) (Arrays.stream(frequencias).filter(frequencia -> frequencia.isStatus()).count() / frequencias.length);
+        int qtdFrequencias = 0;
+        for (var frequencia : frequencias) {
+            if (frequencia.isStatus())
+                qtdFrequencias++;
+        }
+            
+        double porcentagemFrequencia = (double)qtdFrequencias/frequencias.length;
         double fatorFrequencia = FATOR_FREQUENCIA_MAX * porcentagemFrequencia;
 
         fatorFrequencia = fatorFrequencia < FATOR_FREQUENCIA_MIN ? FATOR_FREQUENCIA_MIN : fatorFrequencia;

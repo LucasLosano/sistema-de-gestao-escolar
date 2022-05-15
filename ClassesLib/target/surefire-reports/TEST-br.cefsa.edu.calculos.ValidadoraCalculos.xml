@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.067" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.071" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Users\rafae\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\rafae\AppData\Local\Temp\surefire710922031094077174\surefirebooter1409525737158950476.jar C:\Users\rafae\AppData\Local\Temp\surefire710922031094077174 2022-05-14T23-14-15_799-jvmRun1 surefire13222295211492790605tmp surefire_02886990188239269570tmp"/>
+    <property name="sun.java.command" value="C:\Users\rafae\AppData\Local\Temp\surefire769026681592293882\surefirebooter8611414806524696944.jar C:\Users\rafae\AppData\Local\Temp\surefire769026681592293882 2022-05-15T00-17-12_854-jvmRun1 surefire18083244803083110663tmp surefire_013174917677947020026tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="br.cefsa.edu.calculos.ValidadoraCalculos"/>
     <property name="surefire.test.class.path" value="C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\target\test-classes;C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\target\classes;C:\Users\rafae\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\rafae\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\rafae\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\rafae\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\rafae\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\rafae\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\rafae\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\rafae\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\rafae\AppData\Local\Temp\surefire710922031094077174\surefirebooter1409525737158950476.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\rafae\AppData\Local\Temp\surefire769026681592293882\surefirebooter8611414806524696944.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8"/>
@@ -59,17 +59,17 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="seFrequenciasNaoPertencemAoMesmoPeriodoLetivoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.022"/>
-  <testcase name="seFrequenciasNaoPertencemAoMesmoAlunoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
+  <testcase name="seFrequenciasNaoPertencemAoMesmoPeriodoLetivoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.028"/>
+  <testcase name="seFrequenciasNaoPertencemAoMesmoAlunoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0"/>
   <testcase name="seNotasNaoPertencemAoMesmoTipoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
   <testcase name="seNotasDeAlunoEPesosSaoValidosEFatorFrequenciaAtivoCalculaMedia" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.003"/>
-  <testcase name="seSomaDosPesosForDiferentedeUmEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0"/>
+  <testcase name="seSomaDosPesosForDiferentedeUmEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
   <testcase name="seFrequenciasNaoPertencemAMesmaMateriaEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
   <testcase name="seNotasDeAlunoEPesosSaoValidosCalculaMedia" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
-  <testcase name="seNotasNaoPertencemAoMesmoAlunoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
-  <testcase name="seQuantidadeDeFrequenciasForMenorQueUmEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
+  <testcase name="seNotasNaoPertencemAoMesmoAlunoEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.002"/>
+  <testcase name="seQuantidadeDeFrequenciasForMenorQueUmEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.002"/>
   <testcase name="seQuantidadeDeNotasForDiferenteDeQuatroEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
   <testcase name="sePesoForIgualAZeroEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
   <testcase name="seNotasForemMenorQueZeroOuMaiorQueDezEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
-  <testcase name="seQuantidadeDePesosForDiferenteDeQuatroEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0.001"/>
+  <testcase name="seQuantidadeDePesosForDiferenteDeQuatroEhEsperadoException" classname="br.cefsa.edu.calculos.ValidadoraCalculos" time="0"/>
 </testsuite>

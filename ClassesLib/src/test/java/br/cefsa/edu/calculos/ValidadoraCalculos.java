@@ -56,8 +56,8 @@ public class ValidadoraCalculos {
             new Nota(3, EnumTipoNota.N3, 10, aluno, new Materia(), new PeriodoLetivo()),
             new Nota(4, EnumTipoNota.N4, 10, aluno, new Materia(), new PeriodoLetivo())
         };
-        frequencias = new Frequencia[10];
-        for (int i = 0; i < 10; i++) {
+        frequencias = new Frequencia[20];
+        for (int i = 0; i < 20; i++) {
             frequencias[i] = new Frequencia(1, LocalDate.now().plusDays(i), true, materia, aluno, periodoLetivo);
         }
     }
@@ -92,6 +92,29 @@ public class ValidadoraCalculos {
 
         double media = Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias);
         Assertions.assertEquals(10, media);
+
+        for (int i = 0; i < 20; i++) {
+            frequencias[i] = new Frequencia(1, LocalDate.now().plusDays(i), false, materia, aluno, periodoLetivo);
+        }
+        media = Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.25, 0.25}, frequencias);
+        Assertions.assertEquals(10, media);
+
+        notas[0].setValor(6);
+        for (int i = 0; i < 20; i++) {
+            frequencias[i] = new Frequencia(1, LocalDate.now().plusDays(i), true, materia, aluno, periodoLetivo);
+        }
+        media = Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.25, 0.25}, frequencias);
+        Assertions.assertEquals(9.9, media);
+
+        notas[1].setValor(6);
+        frequencias[0].setStatus(false);
+        media = Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.25, 0.25}, frequencias);
+        Assertions.assertEquals(8.36, media);
+
+        notas[2].setValor(0);
+        frequencias[1].setStatus(false);
+        media = Calculos.calculaMedia(notas, new double[]{0.25, 0.3, 0.4, 0.05}, frequencias);
+        Assertions.assertEquals(3.8, media);
     }
 
     @Test
@@ -139,11 +162,6 @@ public class ValidadoraCalculos {
 
     @Test
     public void seQuantidadeDeNotasForDiferenteDeQuatroEhEsperadoException() throws Exception {
-        notas = new Nota[0];
-        Exception thrown = Assertions.assertThrows(Exception.class,
-                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
-
-        Assertions.assertTrue(thrown.getMessage().contains(NotasException.ENTRE_UM_E_QUATRO));
 
         notas = new Nota[]{
             new Nota(1, EnumTipoNota.N1, 10, aluno, new Materia(), new PeriodoLetivo()),
@@ -152,10 +170,10 @@ public class ValidadoraCalculos {
             new Nota(4, EnumTipoNota.N4, 10, aluno, new Materia(), new PeriodoLetivo()),
             new Nota(5, EnumTipoNota.N4, 10, aluno, new Materia(), new PeriodoLetivo())
         };
-        thrown = Assertions.assertThrows(Exception.class,
+        Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
 
-        Assertions.assertTrue(thrown.getMessage().contains(NotasException.ENTRE_UM_E_QUATRO));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.MAXIMO_QUATRO));
     }
 
     @Test
