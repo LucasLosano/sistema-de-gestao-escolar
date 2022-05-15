@@ -36,37 +36,37 @@ public abstract class Calculos {
 
     private static void ValidaPesos(double[] pesos) throws Exception {
         if (pesos.length != 4) {
-            throw new Exception(Pesos.IGUAL_A_QUATRO );
+            throw new Exception(PesosException.IGUAL_A_QUATRO );
         }
 
         if (Arrays.stream(pesos).anyMatch(peso -> peso == 0)) {
-            throw new Exception(Pesos.DIFERENTE_DE_ZERO);
+            throw new Exception(PesosException.DIFERENTE_DE_ZERO);
         }
 
         if (Arrays.stream(pesos).sum() != 1) {
-            throw new Exception(Pesos.SOMA_IGUAL_A_UM);
+            throw new Exception(PesosException.SOMA_IGUAL_A_UM);
         }
     }
 
     private static void ValidaNotas(Nota[] notas) throws Exception {
         if (notas.length > 4 || notas.length == 0) {
-            throw new Exception(Notas.ENTRE_UM_E_QUATRO);
+            throw new Exception(NotasException.ENTRE_UM_E_QUATRO);
         }
 
         int alunoId = notas[0].getAluno().getId();
         if (!Arrays.stream(notas).allMatch(nota -> nota.getAluno().getId() == alunoId)) {
-            throw new Exception(Notas.MESMO_ALUNO);
+            throw new Exception(NotasException.MESMO_ALUNO);
         }
 
         if (Arrays.stream(notas).anyMatch(nota -> nota.getValor() > 10 || nota.getValor() < 0)) {
-            throw new Exception(Notas.ENTRE_ZERO_E_DEZ);
+            throw new Exception(NotasException.ENTRE_ZERO_E_DEZ);
         }
 
         List<EnumTipoNota> notasPassadas = new ArrayList();
         notasPassadas.add(notas[0].getTipoNota());
         for (int i = 1; i < notas.length; i++) {
             if (notasPassadas.contains(notas[i].getTipoNota())) {
-                throw new Exception(Notas.TIPOS_DIFERENTES);
+                throw new Exception(NotasException.TIPOS_DIFERENTES);
             }
 
             notasPassadas.add(notas[i].getTipoNota());
@@ -76,22 +76,22 @@ public abstract class Calculos {
     private static void ValidaFrequencia(Frequencia[] frequencias) throws Exception {
 
         if (frequencias.length == 0) {
-            throw new Exception(Frequencias.MAIOR_QUE_ZERO);
+            throw new Exception(FrequenciasException.MAIOR_QUE_ZERO);
         }
 
         int alunoId = frequencias[0].getAluno().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getAluno().getId() == alunoId)) {
-            throw new Exception(Frequencias.MESMO_ALUNO);
+            throw new Exception(FrequenciasException.MESMO_ALUNO);
         }
 
         int materiaId = frequencias[0].getMateria().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getMateria().getId() == materiaId)) {
-            throw new Exception(Frequencias.MESMA_MATERIA);
+            throw new Exception(FrequenciasException.MESMA_MATERIA);
         }
         
         int periodoLetivoId = frequencias[0].getPeriodo().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getPeriodo().getId() == periodoLetivoId)) {
-            throw new Exception(Frequencias.MESMO_PERIODO_LETIVO);
+            throw new Exception(FrequenciasException.MESMO_PERIODO_LETIVO);
         }
     }
     

@@ -102,7 +102,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0, 0.3, 0, 0.1, 0.1}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Pesos.IGUAL_A_QUATRO));
+        Assertions.assertTrue(thrown.getMessage().contains(PesosException.IGUAL_A_QUATRO));
     }
     
     @Test
@@ -110,7 +110,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0, 0.3, 0, 0.1}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Pesos.DIFERENTE_DE_ZERO));
+        Assertions.assertTrue(thrown.getMessage().contains(PesosException.DIFERENTE_DE_ZERO));
     }
     
     @Test
@@ -118,7 +118,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.5, 0.3, 0.5, 0.1}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Pesos.SOMA_IGUAL_A_UM));
+        Assertions.assertTrue(thrown.getMessage().contains(PesosException.SOMA_IGUAL_A_UM));
     }
     
     @Test
@@ -127,7 +127,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Notas.MESMO_ALUNO));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.MESMO_ALUNO));
     }
     
     @Test
@@ -136,7 +136,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_ZERO_E_DEZ));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.ENTRE_ZERO_E_DEZ));
     }
     
     @Test
@@ -145,7 +145,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_UM_E_QUATRO));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.ENTRE_UM_E_QUATRO));
         
         notas = new Nota[]{
             new Nota(1, EnumTipoNota.N1, 10, aluno, new Materia(), new PeriodoLetivo()),
@@ -157,7 +157,7 @@ public class ValidadoraCalculos {
         thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_UM_E_QUATRO));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.ENTRE_UM_E_QUATRO));
     }
     
     @Test
@@ -166,7 +166,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains(Notas.TIPOS_DIFERENTES));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.TIPOS_DIFERENTES));
     }
     
     @Test
@@ -174,7 +174,7 @@ public class ValidadoraCalculos {
         frequencias = new Frequencia[0];
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
-        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MAIOR_QUE_ZERO));
+        Assertions.assertTrue(thrown.getMessage().contains(FrequenciasException.MAIOR_QUE_ZERO));
     }
     
     @Test
@@ -182,7 +182,7 @@ public class ValidadoraCalculos {
         frequencias[0].setAluno(aluno2);
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
-        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMO_ALUNO));
+        Assertions.assertTrue(thrown.getMessage().contains(FrequenciasException.MESMO_ALUNO));
     }
     
     @Test
@@ -190,7 +190,7 @@ public class ValidadoraCalculos {
         frequencias[0].setMateria(materia2);
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
-        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMA_MATERIA));
+        Assertions.assertTrue(thrown.getMessage().contains(FrequenciasException.MESMA_MATERIA));
     }
     
     @Test
@@ -198,6 +198,6 @@ public class ValidadoraCalculos {
         frequencias[0].setPeriodo(periodoLetivo2);
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
-        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMO_PERIODO_LETIVO));
+        Assertions.assertTrue(thrown.getMessage().contains(FrequenciasException.MESMO_PERIODO_LETIVO));
     }
 }
