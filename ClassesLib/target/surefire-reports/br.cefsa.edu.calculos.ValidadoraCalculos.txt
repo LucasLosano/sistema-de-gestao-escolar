@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.cefsa.edu.calculos.ValidadoraCalculos
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in br.cefsa.edu.calculos.ValidadoraCalculos
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.07 s <<< FAILURE! - in br.cefsa.edu.calculos.ValidadoraCalculos
+seNotasNaoPertencemAMesmaMateriaEhEsperadoException  Time elapsed: 0.039 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.Exception to be thrown, but nothing was thrown.
+	at br.cefsa.edu.calculos.ValidadoraCalculos.seNotasNaoPertencemAMesmaMateriaEhEsperadoException(ValidadoraCalculos.java:191)
+

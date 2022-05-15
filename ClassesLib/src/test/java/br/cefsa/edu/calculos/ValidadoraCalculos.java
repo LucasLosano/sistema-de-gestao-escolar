@@ -184,7 +184,15 @@ public class ValidadoraCalculos {
 
         Assertions.assertTrue(thrown.getMessage().contains(NotasException.TIPOS_DIFERENTES));
     }
-
+    
+    @Test
+    public void seNotasNaoPertencemAMesmaMateriaEhEsperadoException() throws Exception {
+//        notas[0].setMateria(materia2);
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
+        Assertions.assertTrue(thrown.getMessage().contains(NotasException.MESMA_MATERIA));
+    }
+    
     @Test
     public void seQuantidadeDeFrequenciasForMenorQueUmEhEsperadoException() throws Exception {
         frequencias = new Frequencia[0];
