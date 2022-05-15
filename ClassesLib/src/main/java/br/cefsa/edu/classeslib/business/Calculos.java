@@ -9,13 +9,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class Calculos {
-    
+
     private static final double FATOR_FREQUENCIA_MAX = 1.1;
     private static final double FATOR_FREQUENCIA_MIN = 1;
-    
+
     public static double calculaMedia(Nota[] notas, double[] pesos) throws Exception {
-        ValidaNotas(notas);
-        ValidaPesos(pesos);
+        validaNotas(notas);
+        validaPesos(pesos);
 
         double media = 0;
         for (int i = 0; i < notas.length; i++) {
@@ -27,16 +27,16 @@ public abstract class Calculos {
 
     public static double calculaMedia(Nota[] notas, double[] pesos, Frequencia[] frequencias) throws Exception {
         double media = calculaMedia(notas, pesos);
-        ValidaFrequencia(frequencias);
-        
+        validaFrequencia(frequencias);
+
         media = media * calculaFatorFrequencia(frequencias);
         media = media > 10 ? 10 : media;
         return arredondaParaDuasCasas(media);
     }
 
-    private static void ValidaPesos(double[] pesos) throws Exception {
+    private static void validaPesos(double[] pesos) throws Exception {
         if (pesos.length != 4) {
-            throw new Exception(PesosException.IGUAL_A_QUATRO );
+            throw new Exception(PesosException.IGUAL_A_QUATRO);
         }
 
         if (Arrays.stream(pesos).anyMatch(peso -> peso == 0)) {
@@ -48,7 +48,7 @@ public abstract class Calculos {
         }
     }
 
-    private static void ValidaNotas(Nota[] notas) throws Exception {
+    private static void validaNotas(Nota[] notas) throws Exception {
         if (notas.length > 4 || notas.length == 0) {
             throw new Exception(NotasException.ENTRE_UM_E_QUATRO);
         }
@@ -73,7 +73,7 @@ public abstract class Calculos {
         }
     }
 
-    private static void ValidaFrequencia(Frequencia[] frequencias) throws Exception {
+    private static void validaFrequencia(Frequencia[] frequencias) throws Exception {
 
         if (frequencias.length == 0) {
             throw new Exception(FrequenciasException.MAIOR_QUE_ZERO);
@@ -88,22 +88,21 @@ public abstract class Calculos {
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getMateria().getId() == materiaId)) {
             throw new Exception(FrequenciasException.MESMA_MATERIA);
         }
-        
+
         int periodoLetivoId = frequencias[0].getPeriodo().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getPeriodo().getId() == periodoLetivoId)) {
             throw new Exception(FrequenciasException.MESMO_PERIODO_LETIVO);
         }
     }
-    
-    private static double arredondaParaDuasCasas(double valor)
-    {
+
+    private static double arredondaParaDuasCasas(double valor) {
         return (double) Math.round(valor * 100) / 100;
     }
 
     private static double calculaFatorFrequencia(Frequencia[] frequencias) {
-        double porcentagemFrequencia = (double)(Arrays.stream(frequencias).filter(frequencia -> frequencia.isStatus()).count() / frequencias.length);
+        double porcentagemFrequencia = (double) (Arrays.stream(frequencias).filter(frequencia -> frequencia.isStatus()).count() / frequencias.length);
         double fatorFrequencia = FATOR_FREQUENCIA_MAX * porcentagemFrequencia;
-        
+
         fatorFrequencia = fatorFrequencia < FATOR_FREQUENCIA_MIN ? FATOR_FREQUENCIA_MIN : fatorFrequencia;
         return fatorFrequencia;
     }

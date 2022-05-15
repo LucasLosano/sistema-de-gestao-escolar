@@ -9,6 +9,7 @@ package br.cefsa.edu.classeslib.exception.messages;
  * @author victo
  */
 public interface NotasException {
+
     public final String ENTRE_UM_E_QUATRO = "São necessários menos de 4 notas e pelo menos 1 nota";
     public final String MESMO_ALUNO = "Todas as notas devem ser do mesmo aluno";
     public final String ENTRE_ZERO_E_DEZ = "As notas devem ser maior que 0 e menor ou igual a 10";
