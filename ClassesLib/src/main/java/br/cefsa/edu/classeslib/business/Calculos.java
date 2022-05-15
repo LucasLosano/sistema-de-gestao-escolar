@@ -3,18 +3,19 @@ package br.cefsa.edu.classeslib.business;
 import br.cefsa.edu.classeslib.entities.Frequencia;
 import br.cefsa.edu.classeslib.entities.Nota;
 import br.cefsa.edu.classeslib.enums.EnumTipoNota;
+import br.cefsa.edu.classeslib.exception.messages.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class Calculos {
-    
+
     private static final double FATOR_FREQUENCIA_MAX = 1.1;
     private static final double FATOR_FREQUENCIA_MIN = 1;
-    
+
     public static double calculaMedia(Nota[] notas, double[] pesos) throws Exception {
-        ValidaNotas(notas);
-        ValidaPesos(pesos);
+        validaNotas(notas);
+        validaPesos(pesos);
 
         double media = 0;
         for (int i = 0; i < notas.length; i++) {
@@ -26,83 +27,91 @@ public abstract class Calculos {
 
     public static double calculaMedia(Nota[] notas, double[] pesos, Frequencia[] frequencias) throws Exception {
         double media = calculaMedia(notas, pesos);
-        ValidaFrequencia(frequencias);
-        
+        validaFrequencia(frequencias);
+
         media = media * calculaFatorFrequencia(frequencias);
         media = media > 10 ? 10 : media;
         return arredondaParaDuasCasas(media);
     }
 
-    private static void ValidaPesos(double[] pesos) throws Exception {
+    private static void validaPesos(double[] pesos) throws Exception {
         if (pesos.length != 4) {
-            throw new Exception("São necessários 4 pesos");
+            throw new Exception(PesosException.IGUAL_A_QUATRO);
         }
 
         if (Arrays.stream(pesos).anyMatch(peso -> peso == 0)) {
-            throw new Exception("Os pesos devem ser diferentes de 0");
+            throw new Exception(PesosException.DIFERENTE_DE_ZERO);
         }
 
         if (Arrays.stream(pesos).sum() != 1) {
-            throw new Exception("A soma dos pesos deve ser 1");
+            throw new Exception(PesosException.SOMA_IGUAL_A_UM);
         }
     }
 
-    private static void ValidaNotas(Nota[] notas) throws Exception {
-        if (notas.length > 4 && notas.length != 0) {
-            throw new Exception("São necessários menos de 4 notas e pelo menos 1 nota");
+    private static void validaNotas(Nota[] notas) throws Exception {
+        if (notas.length == 0)
+            return;
+        
+        if (notas.length > 4) {
+            throw new Exception(NotasException.MAXIMO_QUATRO);
         }
 
         int alunoId = notas[0].getAluno().getId();
         if (!Arrays.stream(notas).allMatch(nota -> nota.getAluno().getId() == alunoId)) {
-            throw new Exception("Todas as notas devem ser do mesmo aluno");
+            throw new Exception(NotasException.MESMO_ALUNO);
         }
 
         if (Arrays.stream(notas).anyMatch(nota -> nota.getValor() > 10 || nota.getValor() < 0)) {
-            throw new Exception("As notas devem ser maior que 0 e menor ou igual a 10");
+            throw new Exception(NotasException.ENTRE_ZERO_E_DEZ);
         }
 
         List<EnumTipoNota> notasPassadas = new ArrayList();
         notasPassadas.add(notas[0].getTipoNota());
         for (int i = 1; i < notas.length; i++) {
             if (notasPassadas.contains(notas[i].getTipoNota())) {
-                throw new Exception("As notas devem ser de tipos diferentes");
+                throw new Exception(NotasException.TIPOS_DIFERENTES);
             }
 
             notasPassadas.add(notas[i].getTipoNota());
         }
     }
 
-    private static void ValidaFrequencia(Frequencia[] frequencias) throws Exception {
+    private static void validaFrequencia(Frequencia[] frequencias) throws Exception {
 
         if (frequencias.length == 0) {
-            throw new Exception("É necessário pelo menos 1 frequência");
+            throw new Exception(FrequenciasException.MAIOR_QUE_ZERO);
         }
 
         int alunoId = frequencias[0].getAluno().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getAluno().getId() == alunoId)) {
-            throw new Exception("Todas as frequências devem ser do mesmo aluno");
+            throw new Exception(FrequenciasException.MESMO_ALUNO);
         }
 
         int materiaId = frequencias[0].getMateria().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getMateria().getId() == materiaId)) {
-            throw new Exception("Todas as frequências devem ser da mesma matéria");
+            throw new Exception(FrequenciasException.MESMA_MATERIA);
         }
-        
+
         int periodoLetivoId = frequencias[0].getPeriodo().getId();
         if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getPeriodo().getId() == periodoLetivoId)) {
-            throw new Exception("Todas as frequências devem ser do mesmo período Letivo");
+            throw new Exception(FrequenciasException.MESMO_PERIODO_LETIVO);
         }
     }
-    
-    private static double arredondaParaDuasCasas(double valor)
-    {
-        return (double) Math.round(valor * 100) / 100;
+
+    private static double arredondaParaDuasCasas(double valor) {
+        return Math.round(valor * 100) / 100.0;
     }
 
     private static double calculaFatorFrequencia(Frequencia[] frequencias) {
-        double porcentagemFrequencia = (double)(Arrays.stream(frequencias).filter(frequencia -> frequencia.isStatus()).count() / frequencias.length);
+        int qtdFrequencias = 0;
+        for (var frequencia : frequencias) {
+            if (frequencia.isStatus())
+                qtdFrequencias++;
+        }
+            
+        double porcentagemFrequencia = (double)qtdFrequencias/frequencias.length;
         double fatorFrequencia = FATOR_FREQUENCIA_MAX * porcentagemFrequencia;
-        
+
         fatorFrequencia = fatorFrequencia < FATOR_FREQUENCIA_MIN ? FATOR_FREQUENCIA_MIN : fatorFrequencia;
         return fatorFrequencia;
     }
