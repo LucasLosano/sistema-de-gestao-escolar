@@ -60,7 +60,7 @@ public class ValidadoraCalculos {
         frequencias = new Frequencia[10];
         for(int i = 0; i < 10; i++)
         {
-            frequencias[i] = new Frequencia(1, LocalDate.now().plusDays(i), true, materia, aluno, new PeriodoLetivo());
+            frequencias[i] = new Frequencia(1, LocalDate.now().plusDays(i), true, materia, aluno, periodoLetivo);
         }
     }
     
@@ -169,4 +169,35 @@ public class ValidadoraCalculos {
         Assertions.assertTrue(thrown.getMessage().contains(Notas.TIPOS_DIFERENTES));
     }
     
+    @Test
+    public void SeQuantidadeDeFrequenciasForMenorQueUmEhEsperadoException() throws Exception {
+        frequencias = new Frequencia[0];
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
+        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MAIOR_QUE_ZERO));
+    }
+    
+    @Test
+    public void SeFrequenciasNaoPertencemAoMesmoAlunoEhEsperadoException() throws Exception {
+        frequencias[0].setAluno(aluno2);
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
+        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMO_ALUNO));
+    }
+    
+    @Test
+    public void SeFrequenciasNaoPertencemAMesmaMateriaEhEsperadoException() throws Exception {
+        frequencias[0].setMateria(materia2);
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
+        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMA_MATERIA));
+    }
+    
+    @Test
+    public void SeFrequenciasNaoPertencemAoMesmoPeriodoLetivoEhEsperadoException() throws Exception {
+        frequencias[0].setPeriodo(periodoLetivo2);
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}, frequencias));
+        Assertions.assertTrue(thrown.getMessage().contains(Frequencias.MESMO_PERIODO_LETIVO));
+    }
 }
