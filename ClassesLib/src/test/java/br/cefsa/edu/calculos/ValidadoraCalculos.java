@@ -12,6 +12,7 @@ import br.cefsa.edu.classeslib.entities.Professor;
 import br.cefsa.edu.classeslib.entities.Turma;
 import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
 import br.cefsa.edu.classeslib.enums.EnumTipoNota;
+import br.cefsa.edu.classeslib.exception.messages.*;
 import java.time.LocalDate;
 import java.util.Date;
 import org.junit.jupiter.api.AfterEach;
@@ -101,7 +102,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0, 0.3, 0, 0.1, 0.1}));
         
-        Assertions.assertTrue(thrown.getMessage().contains("São necessários 4 pesos"));
+        Assertions.assertTrue(thrown.getMessage().contains(Pesos.IGUAL_A_QUATRO));
     }
     
     @Test
@@ -109,7 +110,15 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0, 0.3, 0, 0.1}));
         
-        Assertions.assertTrue(thrown.getMessage().contains("O peso deve ser diferente de 0"));
+        Assertions.assertTrue(thrown.getMessage().contains(Pesos.DIFERENTE_DE_ZERO));
+    }
+    
+    @Test
+    public void SeSomaDosPesosForDiferentedeUmEhEsperadoException() throws Exception {
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.5, 0.3, 0.5, 0.1}));
+        
+        Assertions.assertTrue(thrown.getMessage().contains(Pesos.SOMA_IGUAL_A_UM));
     }
     
     @Test
@@ -118,16 +127,37 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains("Todas as notas devem ser do mesmo aluno"));
+        Assertions.assertTrue(thrown.getMessage().contains(Notas.MESMO_ALUNO));
     }
     
-     @Test
+    @Test
     public void SeNotasForemMenorQueZeroOuMaiorQueDezEhEsperadoException() throws Exception {
         notas[0].setValor(25);
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains("As notas devem ser maior que 0 e menor ou igual a 10"));
+        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_ZERO_E_DEZ));
+    }
+    
+    @Test
+    public void SeQuantidadeDeNotasForDiferenteDeQuatroEhEsperadoException() throws Exception {
+        notas = new Nota[0];
+        Exception thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
+        
+        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_UM_E_QUATRO));
+        
+        notas = new Nota[]{
+            new Nota(1, EnumTipoNota.N1, 10, aluno, new Materia(), new PeriodoLetivo()),
+            new Nota(2, EnumTipoNota.N2, 10, aluno, new Materia(), new PeriodoLetivo()),
+            new Nota(3, EnumTipoNota.N3, 10, aluno, new Materia(), new PeriodoLetivo()),
+            new Nota(4, EnumTipoNota.N4, 10, aluno, new Materia(), new PeriodoLetivo()),
+            new Nota(5, EnumTipoNota.N4, 10, aluno, new Materia(), new PeriodoLetivo())
+        };
+        thrown = Assertions.assertThrows(Exception.class,
+                () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
+        
+        Assertions.assertTrue(thrown.getMessage().contains(Notas.ENTRE_UM_E_QUATRO));
     }
     
     @Test
@@ -136,14 +166,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0.25, 0.25, 0.2, 0.3}));
         
-        Assertions.assertTrue(thrown.getMessage().contains("As notas devem ser de tipos diferentes"));
+        Assertions.assertTrue(thrown.getMessage().contains(Notas.TIPOS_DIFERENTES));
     }
     
-    @Test
-    public void SeSomaDosPesosForDiferentedeUmEhEsperadoException() throws Exception {
-        Exception thrown = Assertions.assertThrows(Exception.class,
-                () -> Calculos.calculaMedia(notas, new double[]{0.5, 0.3, 0.5, 0.1}));
-        
-        Assertions.assertTrue(thrown.getMessage().contains("A soma dos pesos deve ser 1"));
-    }
 }
