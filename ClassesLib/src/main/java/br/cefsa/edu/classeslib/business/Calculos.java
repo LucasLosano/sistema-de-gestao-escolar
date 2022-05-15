@@ -49,9 +49,10 @@ public abstract class Calculos {
     }
 
     private static void validaNotas(Nota[] notas) throws Exception {
-        if (notas.length == 0)
+        if (notas.length == 0) {
             return;
-        
+        }
+
         if (notas.length > 4) {
             throw new Exception(NotasException.MAXIMO_QUATRO);
         }
@@ -63,6 +64,11 @@ public abstract class Calculos {
 
         if (Arrays.stream(notas).anyMatch(nota -> nota.getValor() > 10 || nota.getValor() < 0)) {
             throw new Exception(NotasException.ENTRE_ZERO_E_DEZ);
+        }
+
+        int materiaId = notas[0].getMateria().getId();
+        if (!Arrays.stream(notas).allMatch(nota -> nota.getMateria().getId() == materiaId)) {
+            throw new Exception(NotasException.MESMA_MATERIA);
         }
 
         List<EnumTipoNota> notasPassadas = new ArrayList();
@@ -105,11 +111,12 @@ public abstract class Calculos {
     private static double calculaFatorFrequencia(Frequencia[] frequencias) {
         int qtdFrequencias = 0;
         for (var frequencia : frequencias) {
-            if (frequencia.isStatus())
+            if (frequencia.isStatus()) {
                 qtdFrequencias++;
+            }
         }
-            
-        double porcentagemFrequencia = (double)qtdFrequencias/frequencias.length;
+
+        double porcentagemFrequencia = (double) qtdFrequencias / frequencias.length;
         double fatorFrequencia = FATOR_FREQUENCIA_MAX * porcentagemFrequencia;
 
         fatorFrequencia = fatorFrequencia < FATOR_FREQUENCIA_MIN ? FATOR_FREQUENCIA_MIN : fatorFrequencia;
