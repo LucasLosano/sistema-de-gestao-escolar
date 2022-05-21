@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.cefsa.sistemadegestao.MenuPrincipalAdministradorController">
+   <children>
+      <Button disable="true" layoutX="255.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Alunos" />
+      <Button disable="true" layoutX="255.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Turmas" />
+      <Button disable="true" layoutX="255.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Professores" />
+      <Button disable="true" layoutX="255.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Máterias" />
+      <Button disable="true" layoutX="255.0" layoutY="274.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Cursos" />
+      <Button disable="true" layoutX="255.0" layoutY="330.0" mnemonicParsing="false" text="Grade Horária" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToConfiguracoes" prefHeight="25.0" prefWidth="34.0" text="C" />
+   </children>
+</AnchorPane>
