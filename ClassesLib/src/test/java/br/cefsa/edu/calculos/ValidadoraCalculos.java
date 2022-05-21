@@ -131,7 +131,7 @@ public class ValidadoraCalculos {
         Exception thrown = Assertions.assertThrows(Exception.class,
                 () -> Calculos.calculaMedia(notas, new double[]{0, 0.3, 0, 0.1}));
 
-        Assertions.assertTrue(thrown.getMessage().contains(PesosException.DIFERENTE_DE_ZERO));
+        Assertions.assertTrue(thrown.getMessage().contains(PesosException.MAIOR_QUE_ZERO));
     }
 
     @Test

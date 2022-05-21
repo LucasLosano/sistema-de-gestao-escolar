@@ -1,22 +1,27 @@
 package br.cefsa.edu.classeslib.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Materia {
 
     private int id;
     private String nome;
     private Curso curso;
     private int periodoLecionado;
-    private Professor professor;
+    List<Nota> notas = new ArrayList<Nota>();
+    List<Frequencia> frequencias = new ArrayList<Frequencia>();
 
     public Materia() {
     }
 
-    public Materia(int id, String nome, Curso curso, int periodoLecionado, Professor professor) {
+    public Materia(int id, String nome, Curso curso, int periodoLecionado, List<Nota> notas, List<Frequencia> frequencias) {
         this.id = id;
         this.nome = nome;
         this.curso = curso;
         this.periodoLecionado = periodoLecionado;
-        this.professor = professor;
+        this.notas = notas;
+        this.frequencias = frequencias;
     }
 
     public int getId() {
@@ -51,12 +56,29 @@ public class Materia {
         this.periodoLecionado = periodoLecionado;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public List<Nota> getNotas() {
+        return notas;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setNotas(List<Nota> notas) {
+        this.notas = notas;
+    }
+    
+    public void addNota(Nota nota) {
+        notas.add(nota);
     }
 
+    public List<Frequencia> getFrequencias() {
+        return frequencias;
+    }
+
+    public void setFrequencias(List<Frequencia> frequencias) {
+        this.frequencias = frequencias;
+    }
+    
+    public void addFrequencia(Frequencia frequencia) {
+        frequencias.add(frequencia);
+    }
+    
+    
 }

@@ -1,8 +1,12 @@
 package br.cefsa.edu.classeslib.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Professor extends Pessoa {
 
     private boolean ehCoordenador;
+    private List<Materia> materias = new ArrayList<Materia>();
 
     public Professor() {
     }

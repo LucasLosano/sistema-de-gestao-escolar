@@ -39,8 +39,8 @@ public abstract class Calculos {
             throw new Exception(PesosException.IGUAL_A_QUATRO);
         }
 
-        if (Arrays.stream(pesos).anyMatch(peso -> peso == 0)) {
-            throw new Exception(PesosException.DIFERENTE_DE_ZERO);
+        if (Arrays.stream(pesos).anyMatch(peso -> peso <= 0)) {
+            throw new Exception(PesosException.MAIOR_QUE_ZERO);
         }
 
         if (Arrays.stream(pesos).sum() != 1) {
@@ -54,11 +54,6 @@ public abstract class Calculos {
         
         if (notas.length > 4) {
             throw new Exception(NotasException.MAXIMO_QUATRO);
-        }
-
-        int alunoId = notas[0].getAluno().getId();
-        if (!Arrays.stream(notas).allMatch(nota -> nota.getAluno().getId() == alunoId)) {
-            throw new Exception(NotasException.MESMO_ALUNO);
         }
 
         if (Arrays.stream(notas).anyMatch(nota -> nota.getValor() > 10 || nota.getValor() < 0)) {
@@ -82,20 +77,6 @@ public abstract class Calculos {
             throw new Exception(FrequenciasException.MAIOR_QUE_ZERO);
         }
 
-        int alunoId = frequencias[0].getAluno().getId();
-        if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getAluno().getId() == alunoId)) {
-            throw new Exception(FrequenciasException.MESMO_ALUNO);
-        }
-
-        int materiaId = frequencias[0].getMateria().getId();
-        if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getMateria().getId() == materiaId)) {
-            throw new Exception(FrequenciasException.MESMA_MATERIA);
-        }
-
-        int periodoLetivoId = frequencias[0].getPeriodo().getId();
-        if (!Arrays.stream(frequencias).allMatch(frequencia -> frequencia.getPeriodo().getId() == periodoLetivoId)) {
-            throw new Exception(FrequenciasException.MESMO_PERIODO_LETIVO);
-        }
     }
 
     private static double arredondaParaDuasCasas(double valor) {
