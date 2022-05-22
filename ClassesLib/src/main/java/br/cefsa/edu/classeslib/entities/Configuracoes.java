@@ -1,5 +1,7 @@
 package br.cefsa.edu.classeslib.entities;
 
+import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
+
 public class Configuracoes {
 
     private String nomeInstituicao;
@@ -11,12 +13,11 @@ public class Configuracoes {
 
     public Configuracoes() {
     }
-
-    public Configuracoes(String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, float media, boolean fatorFrequencia, String logoInstituicao) {
+  
+    public Configuracoes(String nomeInstituicao, EnumPeriodoLetivo tipoPeriodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao) {
         this.nomeInstituicao = nomeInstituicao;
         this.periodo = periodo;
         this.pesos = pesos;
-        this.media = media;
         this.fatorFrequencia = fatorFrequencia;
         this.logoInstituicao = logoInstituicao;
     }
