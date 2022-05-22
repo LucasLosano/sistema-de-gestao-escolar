@@ -5,7 +5,7 @@ import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
 public class Configuracoes {
 
     private String nomeInstituicao;
-    private PeriodoLetivo periodo;
+    private PeriodoLetivo periodo = new PeriodoLetivo();
     private double[] pesos = {2.5f, 2.5f, 2.5f, 2.5f};
     private float media = 6;
     private boolean fatorFrequencia;
@@ -16,7 +16,7 @@ public class Configuracoes {
   
     public Configuracoes(String nomeInstituicao, EnumPeriodoLetivo tipoPeriodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao) {
         this.nomeInstituicao = nomeInstituicao;
-        this.periodo = periodo;
+        this.periodo.setTipoPeriodo(tipoPeriodo);
         this.pesos = pesos;
         this.fatorFrequencia = fatorFrequencia;
         this.logoInstituicao = logoInstituicao;
@@ -40,6 +40,10 @@ public class Configuracoes {
 
     public double[] getPesos() {
         return pesos;
+    }
+    
+    public double getPeso(int index) {
+        return pesos[index];
     }
 
     public void setPesos(double[] pesos) {

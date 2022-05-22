@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import br.cefsa.edu.classeslib.entities.Configuracoes;
 
 public class ConfiguracoesController {
     
@@ -32,6 +33,10 @@ public class ConfiguracoesController {
     
     @FXML
     private void Save() throws IOException {
+        //Configuracoes configuracao = new Configuracoes();
+        //double[] pesos = new double[4];
         
+        //pesos[0] = Double.parseDouble(txtN1.toString());
+        //configuracao.set
     }
 }
