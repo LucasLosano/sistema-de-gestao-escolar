@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import br.cefsa.edu.classeslib.entities.Configuracoes;
 
+
 public class ConfiguracoesController {
     
     private final String paginaAnterior = "menuPrincipal";

@@ -1,7 +1,0 @@
-br\edu\cefsa\sistemadegestao\MenuPrincipalAdministradorController.class
-module-info.class
-br\edu\cefsa\sistemadegestao\MenuPrincipalAlunoController.class
-br\edu\cefsa\sistemadegestao\App.class
-br\edu\cefsa\sistemadegestao\ConfiguracoesController.class
-br\edu\cefsa\sistemadegestao\VisualizarNotasController.class
-br\edu\cefsa\sistemadegestao\LoginController.class

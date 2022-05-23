@@ -2,16 +2,17 @@ CREATE TABLE Professor (
     professorId INTEGER PRIMARY KEY,
     professorNome VARCHAR(50) NOT NULL,
     professorEmail VARCHAR(50) NOT NULL,
+    professorSenha VARCHAR(32) NOT NULL,
     professorTelefone VARCHAR(50) NOT NULL,
     professorRua VARCHAR(50) NOT NULL,
     professorCidade VARCHAR(50) NOT NULL,
     professorCoordenador BOOLEAN DEFAULT FALSE NOT NULL,
     professorAtivo BOOLEAN DEFAULT TRUE NOT NULL 
 );
---int id, String nome, String email, String telefone, String rua, String cidade, boolean ehCoordenador
+--int id, String nome, String email, String senha, String telefone, String rua, String cidade, boolean ehCoordenador
 INSERT INTO Professor VALUES
-(1, 'Professor', 'Professor@a.com', '(11)99999-9999', 'ProfessorStreet', 'ProfessorTown', FALSE, TRUE),
-(2, 'Professor2', 'Professor2@a.com', '(11)92999-9999', 'ProfessorStreet2', 'ProfessorTown2', FALSE, TRUE);
+(1, 'Professor', 'Professor@a.com', '123', '(11)99999-9999', 'ProfessorStreet', 'ProfessorTown', FALSE, TRUE),
+(2, 'Professor2', 'Professor2@a.com', '123', '(11)92999-9999', 'ProfessorStreet2', 'ProfessorTown2', FALSE, TRUE);
 
 
 CREATE TABLE Curso (
@@ -45,6 +46,7 @@ CREATE TABLE Aluno (
     alunoId INTEGER PRIMARY KEY,
     alunoNome VARCHAR(50) NOT NULL,
     alunoEmail VARCHAR(50) NOT NULL,
+    alunoSenha VARCHAR(32) NOT NULL,
     alunoTelefone VARCHAR(50) NOT NULL,
     alunoRua VARCHAR(50) NOT NULL,
     alunoCidade VARCHAR(50) NOT NULL,
@@ -52,25 +54,26 @@ CREATE TABLE Aluno (
     alunoAtivo BOOLEAN DEFAULT TRUE NOT NULL,
     CONSTRAINT turma_fk FOREIGN KEY (turmaId) REFERENCES Turma(turmaId)
 );
---int id, String nome, String email, String telefone, String rua, String cidade, Turma turma
+--int id, String nome, String email, String senha, String telefone, String rua, String cidade, Turma turma
 INSERT INTO Aluno VALUES
-(1, 'Aluno', 'Aluno@a.com', '(11)99299-9999', 'AlunoStreet', 'ProfessorTown', 1, TRUE),
-(2, 'Aluno2', 'Aluno2@a.com', '(11)92939-9999', 'AlunoStreet2', 'AlunoTown2', 2, TRUE);
-INSERT INTO Aluno (ALUNOID, ALUNONOME, ALUNOEMAIL, ALUNOTELEFONE, ALUNORUA, ALUNOCIDADE, TURMAID) VALUES(3,'a','a','a','a','a',1)
+(1, 'Aluno', 'Aluno@a.com', '123', '(11)99299-9999', 'AlunoStreet', 'ProfessorTown', 1, TRUE),
+(2, 'Aluno2', 'Aluno2@a.com', '123', '(11)92939-9999', 'AlunoStreet2', 'AlunoTown2', 2, TRUE);
+INSERT INTO Aluno (ALUNOID, ALUNONOME, ALUNOEMAIL, ALUNOSENHA, ALUNOTELEFONE, ALUNORUA, ALUNOCIDADE, TURMAID) VALUES(3,'a','a', '123','a','a','a',1)
 
 SELECT * FROM Aluno a
 INNER JOIN Turma t ON t.TURMAID = a.TURMAID
 INNER JOIN Curso c ON c.CURSOID = t.CURSOID
 
 
-CREATE TABLE Configuracoes (
+CREATE TABLE CONFIGURACOES (
     nomeInstituicao VARCHAR(50) NOT NULL,
-    alunoEmail VARCHAR(50) NOT NULL,
-    alunoTelefone VARCHAR(50) NOT NULL,
-    alunoRua VARCHAR(50) NOT NULL,
-    alunoCidade VARCHAR(50) NOT NULL,
-    turmaId INTEGER,
-    alunoAtivo BOOLEAN DEFAULT TRUE NOT NULL,
-    CONSTRAINT turma_fk FOREIGN KEY (turmaId) REFERENCES Turma(turmaId)
-);
-String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, float media, boolean fatorFrequencia, String logoInstituicao
+    periodoLetivo INTEGER NOT NULL,
+    peso1 REAL NOT NULL,
+    peso2 REAL NOT NULL,
+    peso3 REAL NOT NULL,
+    peso4 REAL NOT NULL,
+    fatorFrequencia BOOLEAN NOT NULL,
+    logoInstituicao VARCHAR(100) NOT NULL
+)
+--String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao
+INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
