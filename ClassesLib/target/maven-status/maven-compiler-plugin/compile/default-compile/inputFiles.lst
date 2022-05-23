@@ -1,21 +1,22 @@
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\PesosException.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\enums\EnumTipoNota.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Curso.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\enums\EnumPeriodoLetivo.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\business\Calculos.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\Conexao.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Turma.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\NewMain.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Frequencia.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\AlunoDAO.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\interfaces\InterfaceDAO.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Materia.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Professor.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\NotasException.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\ConfiguracoesDAO.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\FrequenciasException.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Aluno.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Configuracoes.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\PeriodoLetivo.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Nota.java
-C:\Users\victo\Desktop\FTT\EC6\projeto\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Pessoa.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Frequencia.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\AlunoDAO.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Materia.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\module-info.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\enums\EnumTipoNota.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\PesosException.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\NotasException.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Nota.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\ConfiguracoesDAO.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\interfaces\InterfaceDAO.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Aluno.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\FrequenciasException.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Curso.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Professor.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\PeriodoLetivo.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Configuracoes.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\enums\EnumPeriodoLetivo.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\NewMain.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\business\Calculos.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\Conexao.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Turma.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Pessoa.java

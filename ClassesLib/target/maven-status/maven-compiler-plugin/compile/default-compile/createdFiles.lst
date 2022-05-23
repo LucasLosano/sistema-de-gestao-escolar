@@ -15,6 +15,7 @@ br\cefsa\edu\classeslib\entities\Aluno.class
 br\cefsa\edu\classeslib\entities\Nota.class
 br\cefsa\edu\classeslib\DAO\ConfiguracoesDAO.class
 br\cefsa\edu\classeslib\interfaces\InterfaceDAO.class
+module-info.class
 br\cefsa\edu\classeslib\DAO\AlunoDAO.class
 br\cefsa\edu\classeslib\business\Calculos.class
 br\cefsa\edu\classeslib\DAO\Conexao.class

@@ -1,0 +1,4 @@
+--patch-module
+br.cefsa.edu.classeslib=_
+--add-reads
+br.cefsa.edu.classeslib=ALL-UNNAMED

@@ -18,10 +18,10 @@ public class NewMain {
      */
     public static void main(String[] args) {
         //AlunoDAO a = new AlunoDAO();
-        ConfiguracoesDAO c = new ConfiguracoesDAO();
-        double[] d = new double[]{0.2, 0.2, 0.2, 0.4};
-        Configuracoes a = new Configuracoes("aaaa", EnumPeriodoLetivo.Anual, d, true, "sdadasdsa");
-        c.Insert(a);
+        //ConfiguracoesDAO c = new ConfiguracoesDAO();
+        //double[] d = new double[]{0.2, 0.2, 0.2, 0.4};
+        //Configuracoes a = new Configuracoes("aaaa", EnumPeriodoLetivo.Anual, d, true, "sdadasdsa");
+        //c.Insert(a);
     }
     
 }

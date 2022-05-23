@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.cefsa.edu.classeslib.business"},{"l":"br.cefsa.edu.classeslib.DAO"},{"l":"br.cefsa.edu.classeslib.entities"},{"l":"br.cefsa.edu.classeslib.enums"},{"l":"br.cefsa.edu.classeslib.exception.messages"},{"l":"br.cefsa.edu.classeslib.interfaces"}];updateSearchResults();

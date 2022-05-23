@@ -34,10 +34,12 @@ public class ConfiguracoesController {
     
     @FXML
     private void Save() throws IOException {
-        //Configuracoes configuracao = new Configuracoes();
-        //double[] pesos = new double[4];
+        Configuracoes configuracao = new Configuracoes();
+        double[] pesos = new double[4];
         
-        //pesos[0] = Double.parseDouble(txtN1.toString());
-        //configuracao.set
+        pesos[0] = Double.parseDouble(txtN1.getText());
+        pesos[1] = Double.parseDouble(txtN2.getText());
+        pesos[2] = Double.parseDouble(txtN3.getText());
+        pesos[3] = Double.parseDouble(txtN4.getText());
     }
 }
