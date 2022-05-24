@@ -78,46 +78,6 @@ CREATE TABLE CONFIGURACOES (
 --String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao
 INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 CREATE TABLE LOGIN (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     email VARCHAR(50) NOT NULL,
@@ -127,3 +87,41 @@ CREATE TABLE LOGIN (
 -- String emailm String senha, Cargo cargo | senhas -> 123 e abc
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0)
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3)
+
+CREATE TABLE MATERIA (
+    id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    nome VARCHAR(20) NOT NULL,
+    cursoId INT NOT NULL,
+    periodoLecionado INT NOT NULL,
+    professorId INT NOT NULL
+);
+
+INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
+VALUES ('LP2', 1, 1, 1);
+
+CREATE TABLE NOTA (
+    id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    tipoNota INT NOT NULL,
+    valor REAL NOT NULL,
+    alunoId INT NOT NULL,
+    materiaId INT NOT NULL,
+    periodo VARCHAR(20)
+)
+
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (0, 8, 1, 1, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (1, 8, 1, 1, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (2, 5, 1, 1, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (3, 7, 1, 1, 'Teste');
+
+SELECT * FROM NOTA n
+INNER JOIN Aluno a ON a.alunoId = n.alunoId
+INNER JOIN Materia m ON m.id = n.materiaId
+WHERE n.alunoId = 1 AND n.materiaId = 1
+
+SELECT * FROM aluno
+
+SELECT * FROM materia
