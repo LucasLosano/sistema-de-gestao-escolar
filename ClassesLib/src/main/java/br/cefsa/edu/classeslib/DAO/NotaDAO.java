@@ -7,7 +7,6 @@ import br.cefsa.edu.classeslib.entities.Nota;
 import br.cefsa.edu.classeslib.entities.PeriodoLetivo;
 import br.cefsa.edu.classeslib.entities.Professor;
 import br.cefsa.edu.classeslib.entities.Turma;
-import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
 import br.cefsa.edu.classeslib.enums.EnumTipoNota;
 import br.cefsa.edu.classeslib.interfaces.InterfaceDAO;
 import java.sql.Connection;
@@ -63,7 +62,7 @@ public class NotaDAO implements InterfaceDAO<Nota> {
     public List<Nota> GetByAluno(int alunoId) {
                 String sql = "SELECT * FROM NOTA n\n" +
                              "LEFT JOIN Aluno a ON a.alunoId = n.alunoId\n" +
-                             "LEFT JOIN Materia m ON m.materiaId = n.materiaId\n" +
+                             "LEFT JOIN Materia m ON m.id = n.materiaId\n" +
                              "LEFT JOIN Curso c ON c.CURSOID = m.CURSOID\n" +
                              "LEFT JOIN Turma t ON t.TURMAID = a.TURMAID\n" +
                              "LEFT JOIN Professor p ON p.PROFESSORID = m.PROFESSORID\n" +
@@ -199,9 +198,9 @@ public class NotaDAO implements InterfaceDAO<Nota> {
                 ),
                 new Materia(
                     result.getInt("materiaId"),
-                    result.getString("materiaNome"),
+                    result.getString("nome"),
                     new Curso(result.getInt("cursoId"), result.getString("cursoNome"), result.getInt("cursoQuantidadePeriodos")),
-                    result.getInt("materiaPeriodoLecionado"),
+                    result.getInt("periodoLecionado"),
                     new Professor(
                             result.getInt("professorId"),
                             result.getString("professorNome"),

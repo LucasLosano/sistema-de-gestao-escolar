@@ -114,7 +114,7 @@ public abstract class Calculos {
         }
     }
 
-    private static double arredondaParaDuasCasas(double valor) {
+    public static double arredondaParaDuasCasas(double valor) {
         return Math.round(valor * 100) / 100.0;
     }
 

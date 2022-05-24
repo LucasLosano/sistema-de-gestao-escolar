@@ -10,15 +10,15 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.cefsa.sistemadegestao.VisualizarNotasController">
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbvNotas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="Materia" />
-            <TableColumn prefWidth="145.0" text="Professor" />
-            <TableColumn prefWidth="75.0" text="N1" />
-            <TableColumn prefWidth="75.0" text="N2" />
-            <TableColumn prefWidth="75.0" text="N3" />
-            <TableColumn prefWidth="75.0" text="N4" />
-            <TableColumn prefWidth="79.0" text="Média" />
+          <TableColumn fx:id="materiaCol" prefWidth="75.0" text="Materia" />
+            <TableColumn fx:id="professorCol" prefWidth="145.0" text="Professor" />
+            <TableColumn fx:id="n1Col" prefWidth="75.0" text="N1" />
+            <TableColumn fx:id="n2Col" prefWidth="75.0" text="N2" />
+            <TableColumn fx:id="n3Col" prefWidth="75.0" text="N3" />
+            <TableColumn fx:id="n4Col" prefWidth="75.0" text="N4" />
+            <TableColumn fx:id="mediaCol" prefWidth="79.0" text="Média" />
         </columns>
       </TableView>
    </center>

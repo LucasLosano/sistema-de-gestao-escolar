@@ -86,8 +86,8 @@ CREATE TABLE LOGIN (
 );
 -- String emailm String senha, Cargo cargo | senhas -> 123 e abc
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0, 1);
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3);
-
+INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3, -1);
+SELECT * FROM LOGIN
 CREATE TABLE MATERIA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     nome VARCHAR(20) NOT NULL,
@@ -98,6 +98,8 @@ CREATE TABLE MATERIA (
 
 INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
 VALUES ('LP2', 1, 1, 1);
+INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
+VALUES ('LP45', 1, 1, 2);
 
 CREATE TABLE NOTA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -116,3 +118,21 @@ INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (2, 5, 1, 1, 'Teste');
 INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (3, 7, 1, 1, 'Teste');
+
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (0, 8, 1, 2, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (1, 8, 1, 2, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (2, 10, 1, 2, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (3, 7.5, 1, 2, 'Teste');
+SELECT * FROM NOTA
+
+SELECT * FROM Materia
+
+SELECT * FROM NOTA n LEFT JOIN Aluno a ON a.alunoId = n.alunoId
+LEFT JOIN Materia m ON m.id = n.materiaId
+LEFT JOIN Curso c ON c.CURSOID = m.CURSOID
+LEFT JOIN Turma t ON t.TURMAID = a.TURMAID
+LEFT JOIN Professor p ON p.PROFESSORID = m.PROFESSORID WHERE n.alunoId = 1;

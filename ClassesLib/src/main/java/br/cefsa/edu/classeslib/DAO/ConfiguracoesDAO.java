@@ -4,6 +4,7 @@
  */
 package br.cefsa.edu.classeslib.DAO;
 
+import br.cefsa.edu.classeslib.business.Calculos;
 import br.cefsa.edu.classeslib.entities.Configuracoes;
 import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
 import br.cefsa.edu.classeslib.interfaces.InterfaceDAO;
@@ -173,10 +174,10 @@ public class ConfiguracoesDAO implements InterfaceDAO<Configuracoes> {
                 result.getString("nomeInstituicao"),
                 EnumPeriodoLetivo.values()[result.getInt("periodoLetivo")],
                 new double[]{
-                    result.getFloat("peso1"),
-                    result.getFloat("peso2"),
-                    result.getFloat("peso3"),
-                    result.getFloat("peso4")},
+                    Calculos.arredondaParaDuasCasas(result.getFloat("peso1")),
+                    Calculos.arredondaParaDuasCasas(result.getFloat("peso2")),
+                    Calculos.arredondaParaDuasCasas(result.getFloat("peso3")),
+                    Calculos.arredondaParaDuasCasas(result.getFloat("peso4"))},
                 result.getBoolean("fatorFrequencia"),
                 result.getString("logoInstituicao")
         );

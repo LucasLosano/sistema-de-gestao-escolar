@@ -6,7 +6,7 @@ public class Configuracoes {
 
     private String nomeInstituicao;
     private PeriodoLetivo periodo = new PeriodoLetivo();
-    private double[] pesos = {2.5f, 2.5f, 2.5f, 2.5f};
+    private double[] pesos = {2.5d, 2.5d, 2.5d, 2.5d};
     private float media = 6;
     private boolean fatorFrequencia;
     private String logoInstituicao;
