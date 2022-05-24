@@ -78,13 +78,14 @@ CREATE TABLE CONFIGURACOES (
 INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
 
 CREATE TABLE LOGIN (
-    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(32) NOT NULL,
-    cargo INTEGER NOT NULL
+    cargo INTEGER NOT NULL,
+    idUsuario INTEGER default -1,
+    PRIMARY KEY (cargo, idUsuario)
 );
 -- String emailm String senha, Cargo cargo | senhas -> 123 e abc
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0);
+INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0, 1);
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3);
 
 CREATE TABLE MATERIA (
@@ -115,12 +116,3 @@ INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (2, 5, 1, 1, 'Teste');
 INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (3, 7, 1, 1, 'Teste');
-
-SELECT * FROM NOTA n
-INNER JOIN Aluno a ON a.alunoId = n.alunoId
-INNER JOIN Materia m ON m.id = n.materiaId
-WHERE n.alunoId = 1 AND n.materiaId = 1
-
-SELECT * FROM aluno
-
-SELECT * FROM materia

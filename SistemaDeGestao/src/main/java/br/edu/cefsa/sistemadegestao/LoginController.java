@@ -1,6 +1,7 @@
 package br.edu.cefsa.sistemadegestao;
 
 import br.cefsa.edu.classeslib.DAO.LoginDAO;
+import br.cefsa.edu.classeslib.entities.Login;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,14 +25,14 @@ public class LoginController {
     @FXML
     private void switchToMenuPrincipal() throws IOException {
         LoginDAO contexto = new LoginDAO();
-        Pessoa pessoa = new Pessoa();
+        Login login = Login.getInstance();
         
         try{
-            pessoa.setEmail(txtLogin.getText());
-            pessoa.setSenha(txtSenha.getText());
-            if (contexto.ValidateLogin(pessoa)){
-                System.out.print("menuPrincipalAluno".equals("menuPrincipal" + pessoa.getCargo().name()));
-                App.setRoot("menuPrincipal" + pessoa.getCargo().name());
+            login.setEmail(txtLogin.getText());
+            login.setSenha(txtSenha.getText());
+            if (contexto.ValidateLogin(login)){
+                System.out.print("menuPrincipalAluno".equals("menuPrincipal" + login.getCargo().name()));
+                App.setRoot("menuPrincipal" + login.getCargo().name());
             }
             else {
                 System.out.print("Mensagem de login/senha inválida");

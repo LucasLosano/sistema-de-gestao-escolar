@@ -1,4 +1,5 @@
 package br.cefsa.edu.classeslib.DAO;
+import br.cefsa.edu.classeslib.entities.Login;
 import br.cefsa.edu.classeslib.interfaces.InterfaceDAO;
 import br.cefsa.edu.classeslib.entities.Pessoa;
 import br.cefsa.edu.classeslib.enums.EnumCargo;
@@ -11,26 +12,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoginDAO implements InterfaceDAO<Pessoa>{
+public class LoginDAO implements InterfaceDAO<Login>{
     
     
     
     @Override
-    public List<Pessoa> GetAll() {
+    public List<Login> GetAll() {
         String sql = "SELECT * FROM LOGIN";
 
-        List<Pessoa> Pessoas = new ArrayList();
+        List<Login> Pessoas = new ArrayList();
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
-                Pessoas.add(ResultSetToPessoa(result));
+                Pessoas.add(ResultSetToLogin(result));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
@@ -46,29 +49,26 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
 
     
     @Override
-    public Pessoa GetById(int id) {
-        Pessoa pessoa = new Pessoa();
+    public Login GetById(int id) {
         try {
             throw new Exception("Não é possível buscar pelo id");
         } catch (Exception ex) {
             Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return pessoa;
+        return null;
     }
     
-    
-    
-    public boolean ValidateLogin(Pessoa pessoaValidar) throws Exception {
+    public boolean ValidateLogin(Login loginValidar) throws Exception {
         String sql = "SELECT * FROM login WHERE email = ?";
-        Pessoa pessoa = null;
+        Login pessoa = null;
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, pessoaValidar.getEmail());
+            pStatement.setString(1, loginValidar.getEmail());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
-                pessoa = ResultSetToPessoa(result);
+                pessoa = ResultSetToLogin(result);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,9 +83,9 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        boolean isValido = pessoa != null && pessoa.getSenha() != null ? pessoa.getSenha().equals(pessoaValidar.getSenha()) : false;
+        boolean isValido = pessoa != null && pessoa.getSenha() != null ? pessoa.getSenha().equals(loginValidar.getSenha()) : false;
         if(isValido)
-            pessoaValidar.setCargo(pessoa.getCargo());
+            loginValidar.setCargo(pessoa.getCargo());
         return isValido;
         
     }
@@ -125,16 +125,17 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
     }
 
     @Override
-    public void Update(Pessoa pessoa) {
-        String sql = "UPDATE Login SET email = ?, senha = ?, cargo = ?";
+    public void Update(Login pessoa) {
+        String sql = "UPDATE Login SET senha = ?, cargo = ?, idUsuario = ? WHERE email = ?";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, pessoa.getEmail());
-            pStatement.setString(2, pessoa.getSenha());
+            pStatement.setString(1, pessoa.getSenha());
             pStatement.setInt(2, pessoa.getCargo().ordinal());
+            pStatement.setInt(3, pessoa.getIdUsuario());
+            pStatement.setString(4, pessoa.getEmail());
             pStatement.execute();
 
         } catch (ClassNotFoundException ex) {
@@ -151,8 +152,8 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
     }
 
     @Override
-    public void Insert(Pessoa pessoa) {
-        String sql = "INSERT INTO Login(email, senha, cargo) VALUES(?, ?, ?)";
+    public void Insert(Login pessoa) {
+        String sql = "INSERT INTO Login(email, senha, cargo, idUsuario) VALUES(?, ?, ?,?)";
 
         Connection connection = null;
         try {
@@ -161,6 +162,7 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
             pStatement.setString(1, pessoa.getEmail());
             pStatement.setString(2, pessoa.getSenha());
             pStatement.setInt(3, pessoa.getCargo().ordinal());
+            pStatement.setInt(4, pessoa.getIdUsuario());
             pStatement.execute();
 
         } catch (ClassNotFoundException ex) {
@@ -176,11 +178,12 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
         }
     }
 
-    private Pessoa ResultSetToPessoa(ResultSet result) throws SQLException {
-        return new Pessoa(
-                result.getString("email"),
-                result.getString("senha"),
-                EnumCargo.values()[result.getInt("cargo")]
-        );
+    private Login ResultSetToLogin(ResultSet result) throws SQLException, Exception {
+        Login login = Login.getInstance();
+        login.setCargo(EnumCargo.values()[result.getInt("cargo")]);
+        login.setEmail(result.getString("email"));
+        login.setIdUsuario(result.getInt("idUsuario"));
+        login.setSenha(result.getString("senha"));
+        return login;
     }
 }
