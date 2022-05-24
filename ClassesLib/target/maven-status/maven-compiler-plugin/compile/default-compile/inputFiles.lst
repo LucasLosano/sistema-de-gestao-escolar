@@ -6,6 +6,7 @@ C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\PesosException.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\NotasException.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Nota.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\NotaDAO.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\ConfiguracoesDAO.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\interfaces\InterfaceDAO.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Aluno.java

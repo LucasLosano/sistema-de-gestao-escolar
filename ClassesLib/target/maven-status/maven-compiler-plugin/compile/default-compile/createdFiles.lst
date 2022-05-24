@@ -19,4 +19,5 @@ module-info.class
 br\cefsa\edu\classeslib\DAO\AlunoDAO.class
 br\cefsa\edu\classeslib\business\Calculos.class
 br\cefsa\edu\classeslib\DAO\Conexao.class
+br\cefsa\edu\classeslib\DAO\NotaDAO.class
 br\cefsa\edu\classeslib\exception\messages\FrequenciasException.class

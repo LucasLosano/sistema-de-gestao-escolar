@@ -14,7 +14,7 @@
         <columns>
           <TableColumn prefWidth="75.0" text="Materia" />
             <TableColumn prefWidth="145.0" text="Professor" />
-          <TableColumn prefWidth="75.0" text="N1" />
+            <TableColumn prefWidth="75.0" text="N1" />
             <TableColumn prefWidth="75.0" text="N2" />
             <TableColumn prefWidth="75.0" text="N3" />
             <TableColumn prefWidth="75.0" text="N4" />
