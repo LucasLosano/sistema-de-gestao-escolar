@@ -58,11 +58,10 @@ CREATE TABLE Aluno (
 INSERT INTO Aluno VALUES
 (1, 'Aluno', 'Aluno@a.com', '123', '(11)99299-9999', 'AlunoStreet', 'ProfessorTown', 1, TRUE),
 (2, 'Aluno2', 'Aluno2@a.com', '123', '(11)92939-9999', 'AlunoStreet2', 'AlunoTown2', 2, TRUE);
-INSERT INTO Aluno (ALUNOID, ALUNONOME, ALUNOEMAIL, ALUNOSENHA, ALUNOTELEFONE, ALUNORUA, ALUNOCIDADE, TURMAID) VALUES(3,'a','a', '123','a','a','a',1)
 
 SELECT * FROM Aluno a
 INNER JOIN Turma t ON t.TURMAID = a.TURMAID
-INNER JOIN Curso c ON c.CURSOID = t.CURSOID
+INNER JOIN Curso c ON c.CURSOID = t.CURSOID;
 
 
 CREATE TABLE CONFIGURACOES (
@@ -74,7 +73,7 @@ CREATE TABLE CONFIGURACOES (
     peso4 REAL NOT NULL,
     fatorFrequencia BOOLEAN NOT NULL,
     logoInstituicao VARCHAR(100) NOT NULL
-)
+);
 --String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao
 INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
 
@@ -83,10 +82,10 @@ CREATE TABLE LOGIN (
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(32) NOT NULL,
     cargo INTEGER NOT NULL
-)
+);
 -- String emailm String senha, Cargo cargo | senhas -> 123 e abc
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0)
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3)
+INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0);
+INSERT INTO LOGIN (EMAIL, SENHA, CARGO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3);
 
 CREATE TABLE MATERIA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -106,7 +105,7 @@ CREATE TABLE NOTA (
     alunoId INT NOT NULL,
     materiaId INT NOT NULL,
     periodo VARCHAR(20)
-)
+);
 
 INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (0, 8, 1, 1, 'Teste');

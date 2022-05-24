@@ -58,16 +58,14 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
     
     
     
-    public boolean ValidateLogin(String email, String senha) throws Exception {
+    public boolean ValidateLogin(Pessoa pessoaValidar) throws Exception {
         String sql = "SELECT * FROM login WHERE email = ?";
         Pessoa pessoa = null;
-        Pessoa pessoaValidar = new Pessoa();
-        pessoaValidar.setSenha(senha);
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, email);
+            pStatement.setString(1, pessoaValidar.getEmail());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
                 pessoa = ResultSetToPessoa(result);
@@ -85,8 +83,10 @@ public class LoginDAO implements InterfaceDAO<Pessoa>{
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        return pessoa != null && pessoa.getSenha() != null ? pessoa.getSenha().equals(pessoaValidar.getSenha()) : false;
+        boolean isValido = pessoa != null && pessoa.getSenha() != null ? pessoa.getSenha().equals(pessoaValidar.getSenha()) : false;
+        if(isValido)
+            pessoaValidar.setCargo(pessoa.getCargo());
+        return isValido;
         
     }
     

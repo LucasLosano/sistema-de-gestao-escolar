@@ -26,13 +26,13 @@ public class LoginController {
         LoginDAO contexto = new LoginDAO();
         Pessoa pessoa = new Pessoa();
         
-        System.out.print(txtLogin.getText());
-        
         try{
             pessoa.setEmail(txtLogin.getText());
             pessoa.setSenha(txtSenha.getText());
-            if (contexto.ValidateLogin(pessoa.getEmail(), pessoa.getSenha()))
+            if (contexto.ValidateLogin(pessoa)){
+                System.out.print("menuPrincipalAluno".equals("menuPrincipal" + pessoa.getCargo().name()));
                 App.setRoot("menuPrincipal" + pessoa.getCargo().name());
+            }
             else {
                 System.out.print("Mensagem de login/senha inválida");
             }

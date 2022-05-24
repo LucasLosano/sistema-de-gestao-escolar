@@ -7,9 +7,6 @@ import javafx.scene.control.Button;
 public class MenuPrincipalAlunoController {
     
     @FXML
-    private Button btnNotas; 
-    
-    @FXML
     private void switchToNotas() throws IOException {
         App.setRoot("visualizarNotas");
     }
