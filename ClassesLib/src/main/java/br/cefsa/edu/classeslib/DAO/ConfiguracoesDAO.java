@@ -52,7 +52,7 @@ public class ConfiguracoesDAO implements InterfaceDAO<Configuracoes> {
     }
 
     //Como só teremos uma linha por tabela nesse caso,
-    //O Select por ID fica igual ao SelectAll
+    //O Select por Id fica igual ao SelectAll
     @Override
     public Configuracoes GetById(int id) {
         String sql = "SELECT * FROM Configuracoes";
