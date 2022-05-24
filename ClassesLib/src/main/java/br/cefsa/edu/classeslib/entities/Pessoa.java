@@ -1,4 +1,5 @@
 package br.cefsa.edu.classeslib.entities;
+import br.cefsa.edu.classeslib.enums.EnumCargo;
 import br.cefsa.edu.classeslib.business.Calculos;
 
 public class Pessoa {
@@ -10,6 +11,7 @@ public class Pessoa {
     private String telefone;
     private String rua;
     private String cidade;
+    private EnumCargo cargo;
 
     public Pessoa() {
     }
@@ -21,6 +23,12 @@ public class Pessoa {
         this.telefone = telefone;
         this.rua = rua;
         this.cidade = cidade;
+    }
+    
+    public Pessoa(String email, String senha, EnumCargo cargo) {
+        this.email = email;
+        this.senha = senha;
+        this.cargo = cargo;
     }
 
     public int getId() {
@@ -77,6 +85,14 @@ public class Pessoa {
 
     public void setSenha(String senha) throws Exception {
         this.senha = Calculos.criptografaSenha(senha);
+    }
+    
+    public EnumCargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(EnumCargo cargo) {
+        this.cargo = cargo;
     }
 
 }

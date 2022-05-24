@@ -3,7 +3,6 @@ package br.edu.cefsa.sistemadegestao;
 import br.cefsa.edu.classeslib.DAO.ConfiguracoesDAO;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -16,13 +15,12 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 
 
 public class ConfiguracoesController implements Initializable{
     
-    private final String paginaAnterior = "menuPrincipal";
+    private final String paginaAnterior = "menuPrincipalAdministrador";
     @FXML
     private TextField txtNomeInstituicao; 
     @FXML

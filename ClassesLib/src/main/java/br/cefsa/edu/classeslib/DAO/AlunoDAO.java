@@ -105,7 +105,7 @@ public class AlunoDAO implements InterfaceDAO<Aluno> {
 
     @Override
     public void Update(Aluno aluno) {
-        String sql = "UPDATE ALUNO SET ALUNONOME=?,  ALUNOEMAIL = ?, ALUNOSENHA = ?, ALUNOTELEFONE = ?, ALUNORUA = ?, ALUNOCIDADE = ?, TURMAID = ? WHERE ALUNOID = ?";
+        String sql = "UPDATE ALUNO SET ALUNONOME=?,  ALUNOEMAIL = ?, ALUNOTELEFONE = ?, ALUNORUA = ?, ALUNOCIDADE = ?, TURMAID = ? WHERE ALUNOID = ?";
                                                                     
         Connection connection = null;
         try {
@@ -113,12 +113,11 @@ public class AlunoDAO implements InterfaceDAO<Aluno> {
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setString(1, aluno.getNome());
             pStatement.setString(2, aluno.getEmail());
-            pStatement.setString(3, aluno.getSenha());
-            pStatement.setString(4, aluno.getTelefone());
-            pStatement.setString(5, aluno.getRua());
-            pStatement.setString(6, aluno.getCidade());
-            pStatement.setInt(7, aluno.getTurma().getId());
-            pStatement.setInt(8, aluno.getId());
+            pStatement.setString(3, aluno.getTelefone());
+            pStatement.setString(4, aluno.getRua());
+            pStatement.setString(5, aluno.getCidade());
+            pStatement.setInt(6, aluno.getTurma().getId());
+            pStatement.setInt(7, aluno.getId());
             pStatement.execute();
 
         } catch (ClassNotFoundException ex) {
@@ -136,7 +135,7 @@ public class AlunoDAO implements InterfaceDAO<Aluno> {
 
     @Override
     public void Insert(Aluno aluno) {
-        String sql = "INSERT INTO Aluno (ALUNOID, ALUNONOME, ALUNOEMAIL, ALUNOSENHA, ALUNOTELEFONE, ALUNORUA, ALUNOCIDADE, TURMAID) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Aluno (ALUNOID, ALUNONOME, ALUNOEMAIL, ALUNOTELEFONE, ALUNORUA, ALUNOCIDADE, TURMAID) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
                                                                     
         Connection connection = null;
         try {
@@ -145,11 +144,10 @@ public class AlunoDAO implements InterfaceDAO<Aluno> {
             pStatement.setInt(1, aluno.getId());
             pStatement.setString(2, aluno.getNome());
             pStatement.setString(3, aluno.getEmail());
-            pStatement.setString(4, aluno.getSenha());
-            pStatement.setString(5, aluno.getTelefone());
-            pStatement.setString(6, aluno.getRua());
-            pStatement.setString(7, aluno.getCidade());
-            pStatement.setInt(8, aluno.getTurma().getId());
+            pStatement.setString(4, aluno.getTelefone());
+            pStatement.setString(5, aluno.getRua());
+            pStatement.setString(6, aluno.getCidade());
+            pStatement.setInt(7, aluno.getTurma().getId());
             pStatement.execute();
 
         } catch (ClassNotFoundException ex) {
