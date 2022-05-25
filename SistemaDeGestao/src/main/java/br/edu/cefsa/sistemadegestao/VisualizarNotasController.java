@@ -2,6 +2,7 @@ package br.edu.cefsa.sistemadegestao;
 
 import br.cefsa.edu.classeslib.DAO.AlunoDAO;
 import br.cefsa.edu.classeslib.DAO.NotaDAO;
+import br.cefsa.edu.classeslib.entities.Login;
 import br.cefsa.edu.classeslib.entities.Nota;
 import java.io.IOException;
 import java.lang.System.Logger;
@@ -40,7 +41,7 @@ public class VisualizarNotasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         NotaDAO contexto = new NotaDAO();
-        var notas = contexto.GetByAluno(1);
+        var notas = contexto.GetByAluno(Login.getInstance().getIdUsuario());
         
         NotaRow notaRow = new NotaRow();
         materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
