@@ -19,7 +19,7 @@ public class Conexao {
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
-        Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/sgedatabase");
+        Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/N2");
         return connection;
     }
 }

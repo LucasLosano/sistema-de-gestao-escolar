@@ -14,7 +14,7 @@ public class Login {
     private EnumCargo cargo;
     private int idUsuario;
     
-    private Login() {
+    public Login() {
     }
 
     public static Login getInstance() {
@@ -23,7 +23,7 @@ public class Login {
         }
         return login;
     }
-
+    
     public String getEmail() {
         return email;
     }
@@ -46,6 +46,10 @@ public class Login {
 
     public void setSenha(String senha) throws Exception {
         this.senha = Calculos.criptografaSenha(senha);
+    }
+    
+    public void setSenhaBanco(String senha) {
+        this.senha = senha;
     }
 
     public int getIdUsuario() {

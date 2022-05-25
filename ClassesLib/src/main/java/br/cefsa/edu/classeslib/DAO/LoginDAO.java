@@ -84,8 +84,10 @@ public class LoginDAO implements InterfaceDAO<Login>{
             }
         }
         boolean isValido = pessoa != null && pessoa.getSenha() != null ? pessoa.getSenha().equals(loginValidar.getSenha()) : false;
-        if(isValido)
+        if(isValido) {
             loginValidar.setCargo(pessoa.getCargo());
+            loginValidar.setIdUsuario(pessoa.getIdUsuario());
+        }
         return isValido;
         
     }
@@ -179,11 +181,11 @@ public class LoginDAO implements InterfaceDAO<Login>{
     }
 
     private Login ResultSetToLogin(ResultSet result) throws SQLException, Exception {
-        Login login = Login.getInstance();
+        Login login = new Login();
         login.setCargo(EnumCargo.values()[result.getInt("cargo")]);
         login.setEmail(result.getString("email"));
         login.setIdUsuario(result.getInt("idUsuario"));
-        login.setSenha(result.getString("senha"));
+        login.setSenhaBanco(result.getString("senha"));
         return login;
     }
 }
