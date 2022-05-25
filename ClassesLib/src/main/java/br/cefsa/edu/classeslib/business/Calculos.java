@@ -44,7 +44,7 @@ public abstract class Calculos {
         return arredondaParaDuasCasas(media);
     }
 
-    private static void validaPesos(double[] pesos) throws Exception {
+    public static void validaPesos(double[] pesos) throws Exception {
         if (pesos.length != 4) {
             throw new Exception(PesosException.IGUAL_A_QUATRO);
         }

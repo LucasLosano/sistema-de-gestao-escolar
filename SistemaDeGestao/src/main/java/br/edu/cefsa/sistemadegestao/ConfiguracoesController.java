@@ -1,6 +1,7 @@
 package br.edu.cefsa.sistemadegestao;
 
 import br.cefsa.edu.classeslib.DAO.ConfiguracoesDAO;
+import br.cefsa.edu.classeslib.business.Calculos;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -9,6 +10,9 @@ import javafx.scene.control.TextField;
 import br.cefsa.edu.classeslib.entities.Configuracoes;
 import br.cefsa.edu.classeslib.entities.PeriodoLetivo;
 import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
+import br.edu.cefsa.helper.Alerts;
+import br.edu.cefsa.helper.Contraints;
+import br.edu.cefsa.helper.Validacao;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -16,6 +20,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 
 public class ConfiguracoesController implements Initializable{
@@ -24,6 +30,8 @@ public class ConfiguracoesController implements Initializable{
     @FXML
     private TextField txtNomeInstituicao; 
     @FXML
+    private Label lblNomeInstituicaoError; 
+    @FXML
     private TextField txtN1; 
     @FXML
     private TextField txtN2; 
@@ -31,6 +39,8 @@ public class ConfiguracoesController implements Initializable{
     private TextField txtN3; 
     @FXML
     private TextField txtN4; 
+    @FXML
+    private Label lblPesosError; 
     @FXML
     private CheckBox chbFatorFrequencia; 
     @FXML
@@ -41,6 +51,10 @@ public class ConfiguracoesController implements Initializable{
         ConfiguracoesDAO contexto = new ConfiguracoesDAO();
         var configuracoes = contexto.GetAll().get(0);
         
+        Contraints.setTextFieldDouble(txtN1);
+        Contraints.setTextFieldDouble(txtN2);
+        Contraints.setTextFieldDouble(txtN3);
+        Contraints.setTextFieldDouble(txtN4);
         txtNomeInstituicao.setText(configuracoes.getNomeInstituicao());
         txtN1.setText(Double.toString(configuracoes.getPeso(0)));
         txtN2.setText(Double.toString(configuracoes.getPeso(1)));
@@ -62,13 +76,29 @@ public class ConfiguracoesController implements Initializable{
         PeriodoLetivo periodo = new PeriodoLetivo();
         double[] pesos = new double[4];
         boolean novoRegistro = false;
+        boolean isValido = true;
         
+        periodo.setTipoPeriodo((EnumPeriodoLetivo) cbxPeriodo.getValue());
         pesos[0] = Double.parseDouble(txtN1.getText());
         pesos[1] = Double.parseDouble(txtN2.getText());
         pesos[2] = Double.parseDouble(txtN3.getText());
         pesos[3] = Double.parseDouble(txtN4.getText());
-        periodo.setTipoPeriodo((EnumPeriodoLetivo) cbxPeriodo.getValue());
-        
+        try {
+            Calculos.validaPesos(pesos);
+            lblPesosError.setText("");
+        } catch (Exception ex) {
+            lblPesosError.setText(ex.getMessage());
+            isValido = false;
+        }
+        try {
+            Validacao.validaTexto(txtNomeInstituicao.getText());
+            lblNomeInstituicaoError.setText("");
+        } catch (Exception ex) {
+            lblNomeInstituicaoError.setText(ex.getMessage());
+            isValido = false;
+        }
+        if(!isValido)
+            return;
         if (configuracao == null) {
             configuracao = new Configuracoes();
             novoRegistro = true;
@@ -83,6 +113,9 @@ public class ConfiguracoesController implements Initializable{
             contexto.Insert(configuracao);
         else
             contexto.Update(configuracao);
+        
+        Alerts.showAlert("Mensagem", "", "Salvo com sucesso!", Alert.AlertType.INFORMATION);
+        switchGoBack();
     }
 
     private void setPeriodo(Configuracoes configuracoes) {
