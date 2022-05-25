@@ -7,11 +7,21 @@ import br.cefsa.edu.classeslib.exception.messages.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.security.*;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 
 public abstract class Calculos {
 
     private static final double FATOR_FREQUENCIA_MAX = 1.1;
     private static final double FATOR_FREQUENCIA_MIN = 1;
+    
+    public static String criptografaSenha(String senha) throws Exception{
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        md5.update(StandardCharsets.UTF_8.encode(senha));
+        
+        return String.format("%032x", new BigInteger(1, md5.digest()));
+    }
 
     public static double calculaMedia(Nota[] notas, double[] pesos) throws Exception {
         validaNotas(notas);
@@ -104,7 +114,7 @@ public abstract class Calculos {
         }
     }
 
-    private static double arredondaParaDuasCasas(double valor) {
+    public static double arredondaParaDuasCasas(double valor) {
         return Math.round(valor * 100) / 100.0;
     }
 

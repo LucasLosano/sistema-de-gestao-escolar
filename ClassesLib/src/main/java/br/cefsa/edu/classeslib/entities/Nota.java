@@ -71,4 +71,10 @@ public class Nota {
         this.periodo = periodo;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(valor);
+    }
+    
+    
 }

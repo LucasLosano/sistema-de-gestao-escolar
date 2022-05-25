@@ -1,22 +1,23 @@
 package br.cefsa.edu.classeslib.entities;
 
+import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
+
 public class Configuracoes {
 
     private String nomeInstituicao;
-    private PeriodoLetivo periodo;
-    private double[] pesos = {2.5f, 2.5f, 2.5f, 2.5f};
+    private PeriodoLetivo periodo = new PeriodoLetivo();
+    private double[] pesos = {2.5d, 2.5d, 2.5d, 2.5d};
     private float media = 6;
     private boolean fatorFrequencia;
     private String logoInstituicao;
 
     public Configuracoes() {
     }
-
-    public Configuracoes(String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, float media, boolean fatorFrequencia, String logoInstituicao) {
+  
+    public Configuracoes(String nomeInstituicao, EnumPeriodoLetivo tipoPeriodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao) {
         this.nomeInstituicao = nomeInstituicao;
-        this.periodo = periodo;
+        this.periodo.setTipoPeriodo(tipoPeriodo);
         this.pesos = pesos;
-        this.media = media;
         this.fatorFrequencia = fatorFrequencia;
         this.logoInstituicao = logoInstituicao;
     }
@@ -39,6 +40,10 @@ public class Configuracoes {
 
     public double[] getPesos() {
         return pesos;
+    }
+    
+    public double getPeso(int index) {
+        return pesos[index];
     }
 
     public void setPesos(double[] pesos) {
