@@ -3,6 +3,7 @@ package br.edu.cefsa.sistemadegestao;
 import br.cefsa.edu.classeslib.DAO.NotaDAO;
 import br.cefsa.edu.classeslib.entities.Login;
 import br.cefsa.edu.classeslib.entities.Nota;
+import br.cefsa.edu.classeslib.exception.messages.JavaFXException;
 import br.edu.cefsa.helper.Alerts;
 import java.io.IOException;
 import java.net.URL;
@@ -38,24 +39,23 @@ public class VisualizarNotasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        NotaDAO contexto = new NotaDAO();
-        var notas = contexto.GetByAluno(Login.getInstance().getIdUsuario());
-        
-        NotaRow notaRow = new NotaRow();
-        materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
-        professorCol.setCellValueFactory(new PropertyValueFactory<>("professorNome"));
-        n1Col.setCellValueFactory(new PropertyValueFactory<>("n1"));
-        n2Col.setCellValueFactory(new PropertyValueFactory<>("n2"));
-        n3Col.setCellValueFactory(new PropertyValueFactory<>("n3"));
-        n4Col.setCellValueFactory(new PropertyValueFactory<>("n4"));
-        mediaCol.setCellValueFactory(new PropertyValueFactory<>("media"));
-        
-        
         try {
+            NotaDAO contexto = new NotaDAO();
+            var notas = contexto.GetByAluno(Login.getInstance().getIdUsuario());
+
+            NotaRow notaRow = new NotaRow();
+            materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
+            professorCol.setCellValueFactory(new PropertyValueFactory<>("professorNome"));
+            n1Col.setCellValueFactory(new PropertyValueFactory<>("n1"));
+            n2Col.setCellValueFactory(new PropertyValueFactory<>("n2"));
+            n3Col.setCellValueFactory(new PropertyValueFactory<>("n3"));
+            n4Col.setCellValueFactory(new PropertyValueFactory<>("n4"));
+            mediaCol.setCellValueFactory(new PropertyValueFactory<>("media"));
+        
             List<NotaRow> notasList = notaRow.NotasToNotasTableList(notas);
             tbvNotas.getItems().addAll(notasList);
         } catch (Exception ex) {
-            Alerts.showAlert("Erro", "", ex.getMessage(), Alert.AlertType.ERROR);
+            Alerts.showAlert(JavaFXException.TITULO_BANCO_DADOS, null, JavaFXException.MENSAGEM_BANCO_DADOS, Alert.AlertType.WARNING);
         }
     }
 
