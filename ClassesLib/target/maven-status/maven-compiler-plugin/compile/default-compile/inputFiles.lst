@@ -1,4 +1,3 @@
-C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\TestMain.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Frequencia.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Materia.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\module-info.java
@@ -22,8 +21,8 @@ C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\supportclass\NotaRow.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Configuracoes.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\enums\EnumPeriodoLetivo.java
-C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\NewMain.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\business\Calculos.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\DAO\Conexao.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Login.java
 C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\entities\Turma.java
+C:\Users\rafae\OneDrive\FTT\6º Semestre\sistema-de-gestao-escolar\ClassesLib\src\main\java\br\cefsa\edu\classeslib\exception\messages\JavaFXException.java
