@@ -8,16 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class MenuPrincipalAlunoController implements Initializable {
+public class MenuPrincipalAlunoController{
     
     @FXML
     private void switchToNotas() throws IOException {
         App.setRoot("visualizarNotas");
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Login login = Login.getInstance();
-        System.out.print(login.getCargo().name());
+    
+    @FXML
+    private void switchToFrequencia() throws IOException {
+        App.setRoot("visualizarFrequencia");
     }
 }

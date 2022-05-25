@@ -1,0 +1,8 @@
+br\edu\cefsa\sistemadegestao\MenuPrincipalAdministradorController.class
+br\edu\cefsa\sistemadegestao\MenuPrincipalAlunoController.class
+br\edu\cefsa\sistemadegestao\App.class
+br\edu\cefsa\helper\Validacao.class
+br\edu\cefsa\sistemadegestao\ConfiguracoesController.class
+br\edu\cefsa\helper\Contraints.class
+br\edu\cefsa\sistemadegestao\LoginController.class
+br\edu\cefsa\helper\Alerts.class

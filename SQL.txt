@@ -1,142 +1,3 @@
-CREATE TABLE Professor (
-    professorId INTEGER PRIMARY KEY,
-    professorNome VARCHAR(50) NOT NULL,
-    professorEmail VARCHAR(50) NOT NULL,
-    professorSenha VARCHAR(32) NOT NULL,
-    professorTelefone VARCHAR(50) NOT NULL,
-    professorRua VARCHAR(50) NOT NULL,
-    professorCidade VARCHAR(50) NOT NULL,
-    professorCoordenador BOOLEAN DEFAULT FALSE NOT NULL,
-    professorAtivo BOOLEAN DEFAULT TRUE NOT NULL 
-);
---int id, String nome, String email, String senha, String telefone, String rua, String cidade, boolean ehCoordenador
-INSERT INTO Professor VALUES
-(1, 'Professor', 'Professor@a.com', '123', '(11)99999-9999', 'ProfessorStreet', 'ProfessorTown', FALSE, TRUE),
-(2, 'Professor2', 'Professor2@a.com', '123', '(11)92999-9999', 'ProfessorStreet2', 'ProfessorTown2', FALSE, TRUE);
-
-
-CREATE TABLE Curso (
-    cursoId INTEGER PRIMARY KEY,
-    cursoNome VARCHAR(50) NOT NULL,
-    cursoQuantidadePeriodos INTEGER DEFAULT 10 NOT NULL,
-    coordenadorId INTEGER,
-    cursoAtivo BOOLEAN DEFAULT TRUE NOT NULL, 
-    CONSTRAINT coordenador_fk FOREIGN KEY (coordenadorId) REFERENCES Professor (professorId)
-);
---int id, String nome, int quantidadePeriodos, Pessoa coordenador
-INSERT INTO Curso VALUES
-(1, 'Engenharia de Computação', 10, NULL , TRUE),
-(2, 'Engenharia de Alimentos', 10, NULL , TRUE);
-
-
-CREATE TABLE Turma (
-    turmaId INTEGER PRIMARY KEY,
-    turmaPeriodoAtual INTEGER DEFAULT 1 NOT NULL,
-    cursoId INTEGER,
-    turmaAtivo BOOLEAN DEFAULT TRUE NOT NULL,
-    CONSTRAINT curso_fk FOREIGN KEY (cursoId) REFERENCES Curso(cursoId)
-);
---int id, Curso curso, int periodoAtual
-INSERT INTO Turma VALUES
-(1, 1, 1, TRUE),
-(2, 5, 2, TRUE);
-
-
-CREATE TABLE Aluno (
-    alunoId INTEGER PRIMARY KEY,
-    alunoNome VARCHAR(50) NOT NULL,
-    alunoEmail VARCHAR(50) NOT NULL,
-    alunoSenha VARCHAR(32) NOT NULL,
-    alunoTelefone VARCHAR(50) NOT NULL,
-    alunoRua VARCHAR(50) NOT NULL,
-    alunoCidade VARCHAR(50) NOT NULL,
-    turmaId INTEGER,
-    alunoAtivo BOOLEAN DEFAULT TRUE NOT NULL,
-    CONSTRAINT turma_fk FOREIGN KEY (turmaId) REFERENCES Turma(turmaId)
-);
---int id, String nome, String email, String senha, String telefone, String rua, String cidade, Turma turma
-INSERT INTO Aluno VALUES
-(1, 'Aluno', 'Aluno@a.com', '123', '(11)99299-9999', 'AlunoStreet', 'ProfessorTown', 1, TRUE),
-(2, 'Aluno2', 'Aluno2@a.com', '123', '(11)92939-9999', 'AlunoStreet2', 'AlunoTown2', 2, TRUE);
-
-SELECT * FROM Aluno a
-INNER JOIN Turma t ON t.TURMAID = a.TURMAID
-INNER JOIN Curso c ON c.CURSOID = t.CURSOID;
-
-
-CREATE TABLE CONFIGURACOES (
-    nomeInstituicao VARCHAR(50) NOT NULL,
-    periodoLetivo INTEGER NOT NULL,
-    peso1 REAL NOT NULL,
-    peso2 REAL NOT NULL,
-    peso3 REAL NOT NULL,
-    peso4 REAL NOT NULL,
-    fatorFrequencia BOOLEAN NOT NULL,
-    logoInstituicao VARCHAR(100) NOT NULL
-);
---String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao
-INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
-
-CREATE TABLE LOGIN (
-    email VARCHAR(50) NOT NULL,
-    senha VARCHAR(32) NOT NULL,
-    cargo INTEGER NOT NULL,
-    idUsuario INTEGER default -1,
-    PRIMARY KEY (cargo, idUsuario)
-);
--- String emailm String senha, Cargo cargo | senhas -> 123 e abc
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0, 1);
-INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3, -1);
-SELECT * FROM LOGIN
-CREATE TABLE MATERIA (
-    id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    nome VARCHAR(20) NOT NULL,
-    cursoId INT NOT NULL,
-    periodoLecionado INT NOT NULL,
-    professorId INT NOT NULL
-);
-
-INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
-VALUES ('LP2', 1, 1, 1);
-INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
-VALUES ('LP45', 1, 1, 2);
-
-CREATE TABLE NOTA (
-    id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    tipoNota INT NOT NULL,
-    valor REAL NOT NULL,
-    alunoId INT NOT NULL,
-    materiaId INT NOT NULL,
-    periodo VARCHAR(20)
-);
-
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (0, 8, 1, 1, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (1, 8, 1, 1, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (2, 5, 1, 1, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (3, 7, 1, 1, 'Teste');
-
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (0, 8, 1, 2, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (1, 8, 1, 2, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (2, 10, 1, 2, 'Teste');
-INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
-VALUES (3, 7.5, 1, 2, 'Teste');
-SELECT * FROM NOTA
-
-SELECT * FROM Materia
-
-SELECT * FROM NOTA n LEFT JOIN Aluno a ON a.alunoId = n.alunoId
-LEFT JOIN Materia m ON m.id = n.materiaId
-LEFT JOIN Curso c ON c.CURSOID = m.CURSOID
-LEFT JOIN Turma t ON t.TURMAID = a.TURMAID
-LEFT JOIN Professor p ON p.PROFESSORID = m.PROFESSORID WHERE n.alunoId = 1;
-
 CREATE TABLE FREQUENCIA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     dataFrequencia DATE NOT NULL,
@@ -147,13 +8,25 @@ CREATE TABLE FREQUENCIA (
 );
 
 INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
-VALUES ('2022-05-25', TRUE, 1, 1, 'Periodo');
+VALUES ('2022-05-25', TRUE, 1, 1, 'Teste');
 
 INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
-VALUES ('2022-05-26', TRUE, 1, 1, 'Periodo');
+VALUES ('2022-05-26', TRUE, 1, 1, 'Teste');
 
 INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
-VALUES ('2022-05-27', TRUE, 1, 1, 'Periodo');
+VALUES ('2022-05-27', TRUE, 1, 1, 'Teste');
 
 INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
-VALUES ('2022-05-28', TRUE, 0, 1, 'Periodo');
+VALUES ('2022-05-28', FALSE, 2, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-25', TRUE, 2, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-26', TRUE, 2, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 2, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 2, 1, 'Teste');

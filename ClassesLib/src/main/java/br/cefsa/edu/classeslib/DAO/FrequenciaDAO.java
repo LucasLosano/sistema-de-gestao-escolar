@@ -129,6 +129,42 @@ public class FrequenciaDAO implements InterfaceDAO<Frequencia> {
         }
         return frequencia;
     }
+    
+    public List<Frequencia> GetForAluno(int alunoId, int materiaId) {
+                String sql = "SELECT * FROM Frequencia f " +
+                             "LEFT JOIN Aluno a ON a.alunoId = f.alunoId " +
+                             "LEFT JOIN Materia m ON m.id = f.materiaId " +
+                             "LEFT JOIN Curso c ON c.CURSOID = m.CURSOID " +
+                             "LEFT JOIN Turma t ON t.TURMAID = a.TURMAID " +
+                             "LEFT JOIN Professor p ON p.PROFESSORID = m.PROFESSORID " +
+                             "WHERE f.alunoId = ? AND f.materiaId = ?";
+
+        List<Frequencia> frequencia = new ArrayList();
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, alunoId);
+            pStatement.setInt(2, materiaId);
+            ResultSet result = pStatement.executeQuery();
+            while (result.next()) {
+                frequencia.add(ResultSetToFrequencia(result));
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(NotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(NotaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return frequencia;
+    }
 
     @Override
     public void Delete(int id) {

@@ -1,5 +1,6 @@
 package br.edu.cefsa.sistemadegestao;
 
+import br.cefsa.edu.classeslib.DAO.FrequenciaDAO;
 import br.cefsa.edu.classeslib.DAO.NotaDAO;
 import br.cefsa.edu.classeslib.entities.Login;
 import br.cefsa.edu.classeslib.entities.Nota;
@@ -15,45 +16,33 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class VisualizarNotasController implements Initializable {
+public class VisualizarFrequenciaController implements Initializable {
 
     private final String paginaAnterior = "menuPrincipalAluno";
 
     @FXML
-    private TableView<NotaRow> tbvNotas = new TableView<>();
+    private TableView<FrequenciaRow> tbvFrequencia = new TableView<>();
     @FXML
-    private TableColumn<NotaRow, String> materiaCol;
+    private TableColumn<FrequenciaRow, String> materiaCol;
     @FXML
-    private TableColumn<NotaRow, String> professorCol;
+    private TableColumn<FrequenciaRow, String> professorCol;
     @FXML
-    private TableColumn<NotaRow, Nota> n1Col;
-    @FXML
-    private TableColumn<NotaRow, Nota> n2Col;
-    @FXML
-    private TableColumn<NotaRow, Nota> n3Col;
-    @FXML
-    private TableColumn<NotaRow, Nota> n4Col;
-    @FXML
-    private TableColumn<NotaRow, Double> mediaCol;
+    private TableColumn<NotaRow, Double> frequenciaCol;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        NotaDAO contexto = new NotaDAO();
-        var notas = contexto.GetByAluno(Login.getInstance().getIdUsuario());
+        FrequenciaDAO contexto = new FrequenciaDAO();
+        var frequencias = contexto.GetByAluno(Login.getInstance().getIdUsuario());
         
-        NotaRow notaRow = new NotaRow();
+        FrequenciaRow frequenciaRow = new FrequenciaRow();
         materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
         professorCol.setCellValueFactory(new PropertyValueFactory<>("professorNome"));
-        n1Col.setCellValueFactory(new PropertyValueFactory<>("n1"));
-        n2Col.setCellValueFactory(new PropertyValueFactory<>("n2"));
-        n3Col.setCellValueFactory(new PropertyValueFactory<>("n3"));
-        n4Col.setCellValueFactory(new PropertyValueFactory<>("n4"));
-        mediaCol.setCellValueFactory(new PropertyValueFactory<>("media"));
+        frequenciaCol.setCellValueFactory(new PropertyValueFactory<>("frequencia"));
         
         
         try {
-            List<NotaRow> notasList = notaRow.NotasToNotasTableList(notas);
-            tbvNotas.getItems().addAll(notasList);
+            List<FrequenciaRow> frequenciaList = frequenciaRow.FrequenciaListToFrequenciaTableList(frequencias);
+            tbvFrequencia.getItems().addAll(frequenciaList);
         } catch (Exception ex) {
             Alerts.showAlert("Erro", "", ex.getMessage(), Alert.AlertType.ERROR);
         }

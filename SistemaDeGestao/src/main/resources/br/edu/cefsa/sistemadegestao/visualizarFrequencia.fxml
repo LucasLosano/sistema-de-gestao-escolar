@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.cefsa.sistemadegestao.VisualizarFrequenciaController">
+   <center>
+      <TableView fx:id="tbvFrequencia" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="materiaCol" prefWidth="196.0" text="Materia" />
+            <TableColumn fx:id="professorCol" prefWidth="281.0" text="Professor" />
+            <TableColumn fx:id="frequenciaCol" minWidth="0.0" prefWidth="122.0" text="Frequência" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <AnchorPane prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="237.0" layoutY="3.0" text="Frequências">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#switchGoBack" text="&lt;--" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

@@ -1,8 +1,11 @@
 package br.edu.cefsa.sistemadegestao;
 
 import br.cefsa.edu.classeslib.DAO.ConfiguracoesDAO;
+import br.cefsa.edu.classeslib.DAO.FrequenciaDAO;
 import br.cefsa.edu.classeslib.business.Calculos;
 import br.cefsa.edu.classeslib.entities.Configuracoes;
+import br.cefsa.edu.classeslib.entities.Frequencia;
+import br.cefsa.edu.classeslib.entities.Login;
 import br.cefsa.edu.classeslib.entities.Nota;
 import br.cefsa.edu.classeslib.enums.EnumTipoNota;
 import java.util.ArrayList;
@@ -132,7 +135,17 @@ public class NotaRow {
         Nota[] notas = new Nota[]{notaRow.getN1(), notaRow.getN2(), notaRow.getN3(), notaRow.getN4()};
         ConfiguracoesDAO contexto = new ConfiguracoesDAO();
         Configuracoes configuracoes = contexto.GetAll().get(0);
-        notaRow.setMedia(Calculos.calculaMedia(notas, configuracoes.getPesos()));
+        if(configuracoes.isFatorFrequencia())
+        {
+            FrequenciaDAO frequenciaDAO = new FrequenciaDAO();
+            List<Frequencia> frequencias = frequenciaDAO.GetForAluno(
+                    Login.getInstance().getIdUsuario(), 
+                    notaRow.getMateriaId());
+            notaRow.setMedia(Calculos.calculaMedia(notas, configuracoes.getPesos(), frequencias.toArray(Frequencia[]::new)));
+        }
+        else
+            notaRow.setMedia(Calculos.calculaMedia(notas, configuracoes.getPesos()));
+            
     }
 }
 

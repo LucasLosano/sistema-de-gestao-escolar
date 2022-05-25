@@ -15,9 +15,9 @@
          </font>
       </Label>
       <Label alignment="BASELINE_CENTER" text="Login" />
-      <PasswordField fx:id="txtSenha" />
-      <Label text="Senha" />
       <TextField fx:id="txtLogin" alignment="CENTER" />
+      <Label text="Senha" />
+      <PasswordField fx:id="txtSenha" />
       <Label fx:id="lblErro" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="#f20000" />
       <Button fx:id="btnLogar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Logar" />
    </children>
