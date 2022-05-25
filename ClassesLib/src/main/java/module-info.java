@@ -7,4 +7,5 @@ module br.cefsa.edu.classeslib {
     exports br.cefsa.edu.classeslib.DAO;
     exports br.cefsa.edu.classeslib.enums;
     exports br.cefsa.edu.classeslib.business;
+    exports br.cefsa.edu.classeslib.exception.messages;
 }

@@ -3,6 +3,8 @@ package br.edu.cefsa.sistemadegestao;
 import br.cefsa.edu.classeslib.DAO.ConfiguracoesDAO;
 import br.cefsa.edu.classeslib.DAO.LoginDAO;
 import br.cefsa.edu.classeslib.entities.Login;
+import br.cefsa.edu.classeslib.exception.messages.JavaFXException;
+import br.edu.cefsa.helper.Alerts;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,9 +14,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.control.Control;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Alert;
 
 public class LoginController implements Initializable {
 
@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
                 System.out.print("menuPrincipalAluno".equals("menuPrincipal" + login.getCargo().name()));
                 App.setRoot("menuPrincipal" + login.getCargo().name());
             } else {
-                throw new Exception("Mensagem de login/senha inválida");
+                throw new Exception(JavaFXException.LOGIN_INCOMPLETO);
             }
         } catch (Exception e) {
             lblErro.setText(e.getMessage());
@@ -50,10 +50,13 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ConfiguracoesDAO contexto = new ConfiguracoesDAO();
-        var configuracoes = contexto.GetAll().get(0);
-        lblNomeInstituicao.setText(configuracoes.getNomeInstituicao());
-
-        
+        try {
+            ConfiguracoesDAO contexto = new ConfiguracoesDAO();
+            var configuracoes = contexto.GetAll().get(0);
+            lblNomeInstituicao.setText(configuracoes.getNomeInstituicao());
+        }
+        catch (Exception e) {
+            Alerts.showAlert(JavaFXException.TITULO_BANCO_DADOS, null, JavaFXException.MENSAGEM_BANCO_DADOS, Alert.AlertType.WARNING);
+        }
     }
 }

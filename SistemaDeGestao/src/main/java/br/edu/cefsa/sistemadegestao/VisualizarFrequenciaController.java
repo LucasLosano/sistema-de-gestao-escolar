@@ -1,9 +1,8 @@
 package br.edu.cefsa.sistemadegestao;
 
 import br.cefsa.edu.classeslib.DAO.FrequenciaDAO;
-import br.cefsa.edu.classeslib.DAO.NotaDAO;
 import br.cefsa.edu.classeslib.entities.Login;
-import br.cefsa.edu.classeslib.entities.Nota;
+import br.cefsa.edu.classeslib.exception.messages.JavaFXException;
 import br.edu.cefsa.helper.Alerts;
 import java.io.IOException;
 import java.net.URL;
@@ -31,20 +30,19 @@ public class VisualizarFrequenciaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        FrequenciaDAO contexto = new FrequenciaDAO();
-        var frequencias = contexto.GetByAluno(Login.getInstance().getIdUsuario());
-        
-        FrequenciaRow frequenciaRow = new FrequenciaRow();
-        materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
-        professorCol.setCellValueFactory(new PropertyValueFactory<>("professorNome"));
-        frequenciaCol.setCellValueFactory(new PropertyValueFactory<>("frequencia"));
-        
-        
         try {
+            FrequenciaDAO contexto = new FrequenciaDAO();
+            var frequencias = contexto.GetByAluno(Login.getInstance().getIdUsuario());
+
+            FrequenciaRow frequenciaRow = new FrequenciaRow();
+            materiaCol.setCellValueFactory(new PropertyValueFactory<>("materiaNome"));
+            professorCol.setCellValueFactory(new PropertyValueFactory<>("professorNome"));
+            frequenciaCol.setCellValueFactory(new PropertyValueFactory<>("frequencia"));
+
             List<FrequenciaRow> frequenciaList = frequenciaRow.FrequenciaListToFrequenciaTableList(frequencias);
             tbvFrequencia.getItems().addAll(frequenciaList);
         } catch (Exception ex) {
-            Alerts.showAlert("Erro", "", ex.getMessage(), Alert.AlertType.ERROR);
+            Alerts.showAlert(JavaFXException.TITULO_BANCO_DADOS, null, JavaFXException.MENSAGEM_BANCO_DADOS, Alert.AlertType.WARNING);
         }
     }
 

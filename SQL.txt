@@ -14,7 +14,6 @@ INSERT INTO Professor VALUES
 (1, 'Professor', 'Professor@a.com', '123', '(11)99999-9999', 'ProfessorStreet', 'ProfessorTown', FALSE, TRUE),
 (2, 'Professor2', 'Professor2@a.com', '123', '(11)92999-9999', 'ProfessorStreet2', 'ProfessorTown2', FALSE, TRUE);
 
-
 CREATE TABLE Curso (
     cursoId INTEGER PRIMARY KEY,
     cursoNome VARCHAR(50) NOT NULL,
@@ -28,7 +27,6 @@ INSERT INTO Curso VALUES
 (1, 'Engenharia de Computação', 10, NULL , TRUE),
 (2, 'Engenharia de Alimentos', 10, NULL , TRUE);
 
-
 CREATE TABLE Turma (
     turmaId INTEGER PRIMARY KEY,
     turmaPeriodoAtual INTEGER DEFAULT 1 NOT NULL,
@@ -40,7 +38,6 @@ CREATE TABLE Turma (
 INSERT INTO Turma VALUES
 (1, 1, 1, TRUE),
 (2, 5, 2, TRUE);
-
 
 CREATE TABLE Aluno (
     alunoId INTEGER PRIMARY KEY,
@@ -59,11 +56,6 @@ INSERT INTO Aluno VALUES
 (1, 'Aluno', 'Aluno@a.com', '123', '(11)99299-9999', 'AlunoStreet', 'ProfessorTown', 1, TRUE),
 (2, 'Aluno2', 'Aluno2@a.com', '123', '(11)92939-9999', 'AlunoStreet2', 'AlunoTown2', 2, TRUE);
 
-SELECT * FROM Aluno a
-INNER JOIN Turma t ON t.TURMAID = a.TURMAID
-INNER JOIN Curso c ON c.CURSOID = t.CURSOID;
-
-
 CREATE TABLE CONFIGURACOES (
     nomeInstituicao VARCHAR(50) NOT NULL,
     periodoLetivo INTEGER NOT NULL,
@@ -75,7 +67,7 @@ CREATE TABLE CONFIGURACOES (
     logoInstituicao VARCHAR(100) NOT NULL
 );
 --String nomeInstituicao, PeriodoLetivo periodo, double[] pesos, boolean fatorFrequencia, String logoInstituicao
-INSERT INTO CONFIGURACOES VALUES('AAAA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
+INSERT INTO CONFIGURACOES VALUES('FESA', 1, 0.2, 0.2, 0.2, 0.4, true, 'radarada');
 
 CREATE TABLE LOGIN (
     email VARCHAR(50) NOT NULL,
@@ -87,7 +79,6 @@ CREATE TABLE LOGIN (
 -- String emailm String senha, Cargo cargo | senhas -> 123 e abc
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('aluno@faculdade.com', '202cb962ac59075b964b07152d234b70', 0, 1);
 INSERT INTO LOGIN (EMAIL, SENHA, CARGO, IDUSUARIO) VALUES('administrador@faculdade.com', '900150983cd24fb0d6963f7d28e17f72', 3, -1);
-SELECT * FROM LOGIN
 CREATE TABLE MATERIA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     nome VARCHAR(20) NOT NULL,
@@ -100,6 +91,12 @@ INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
 VALUES ('LP2', 1, 1, 1);
 INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
 VALUES ('LP45', 1, 1, 2);
+INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
+VALUES ('CALCULO I', 1, 1, 1);
+INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
+VALUES ('ECONOMIA', 1, 1, 2);
+INSERT INTO MATERIA (nome, cursoId, periodoLecionado, professorId)
+VALUES ('Ivanildo a materia', 1, 1, 1);
 
 CREATE TABLE NOTA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -127,15 +124,33 @@ INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (2, 10, 1, 2, 'Teste');
 INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
 VALUES (3, 7.5, 1, 2, 'Teste');
-SELECT * FROM NOTA
 
-SELECT * FROM Materia
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (0, 10, 1, 3, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (1, 10, 1, 3, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (2, 2, 1, 3, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (3, 2.5, 1, 3, 'Teste');
 
-SELECT * FROM NOTA n LEFT JOIN Aluno a ON a.alunoId = n.alunoId
-LEFT JOIN Materia m ON m.id = n.materiaId
-LEFT JOIN Curso c ON c.CURSOID = m.CURSOID
-LEFT JOIN Turma t ON t.TURMAID = a.TURMAID
-LEFT JOIN Professor p ON p.PROFESSORID = m.PROFESSORID WHERE n.alunoId = 1;
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (0, 5, 1, 4, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (1, 3, 1, 4, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (2, 4, 1, 4, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (3, 7, 1, 4, 'Teste');
+
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (0, 1, 1, 5, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (1, 0, 1, 5, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (2, 0, 1, 5, 'Teste');
+INSERT INTO NOTA (tipoNota, valor, alunoId, materiaId, periodo)
+VALUES (3, 0, 1, 5, 'Teste');
 
 CREATE TABLE FREQUENCIA (
     id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -169,3 +184,117 @@ VALUES ('2022-05-27', TRUE, 2, 1, 'Teste');
 
 INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
 VALUES ('2022-05-28', TRUE, 2, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', FALSE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-25', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-26', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', FALSE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-25', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-26', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-25', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-26', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 3, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', FALSE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 4, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-28', TRUE, 5, 1, 'Teste');
+
+INSERT INTO FREQUENCIA (dataFrequencia, status, materiaId, alunoId, periodo)
+VALUES ('2022-05-27', TRUE, 5, 1, 'Teste');

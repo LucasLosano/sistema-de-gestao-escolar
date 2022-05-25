@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import br.cefsa.edu.classeslib.entities.Configuracoes;
 import br.cefsa.edu.classeslib.entities.PeriodoLetivo;
 import br.cefsa.edu.classeslib.enums.EnumPeriodoLetivo;
+import br.cefsa.edu.classeslib.exception.messages.JavaFXException;
 import br.edu.cefsa.helper.Alerts;
 import br.edu.cefsa.helper.Contraints;
 import br.edu.cefsa.helper.Validacao;
@@ -48,20 +49,24 @@ public class ConfiguracoesController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ConfiguracoesDAO contexto = new ConfiguracoesDAO();
-        var configuracoes = contexto.GetAll().get(0);
-        
-        Contraints.setTextFieldDouble(txtN1);
-        Contraints.setTextFieldDouble(txtN2);
-        Contraints.setTextFieldDouble(txtN3);
-        Contraints.setTextFieldDouble(txtN4);
-        txtNomeInstituicao.setText(configuracoes.getNomeInstituicao());
-        txtN1.setText(Double.toString(configuracoes.getPeso(0)));
-        txtN2.setText(Double.toString(configuracoes.getPeso(1)));
-        txtN3.setText(Double.toString(configuracoes.getPeso(2)));
-        txtN4.setText(Double.toString(configuracoes.getPeso(3)));
-        chbFatorFrequencia.setSelected(configuracoes.isFatorFrequencia());
-        setPeriodo(configuracoes);
+        try {
+            ConfiguracoesDAO contexto = new ConfiguracoesDAO();
+            var configuracoes = contexto.GetAll().get(0);
+
+            Contraints.setTextFieldDouble(txtN1);
+            Contraints.setTextFieldDouble(txtN2);
+            Contraints.setTextFieldDouble(txtN3);
+            Contraints.setTextFieldDouble(txtN4);
+            txtNomeInstituicao.setText(configuracoes.getNomeInstituicao());
+            txtN1.setText(Double.toString(configuracoes.getPeso(0)));
+            txtN2.setText(Double.toString(configuracoes.getPeso(1)));
+            txtN3.setText(Double.toString(configuracoes.getPeso(2)));
+            txtN4.setText(Double.toString(configuracoes.getPeso(3)));
+            chbFatorFrequencia.setSelected(configuracoes.isFatorFrequencia());
+            setPeriodo(configuracoes);
+        } catch (Exception e) {
+            Alerts.showAlert(JavaFXException.TITULO_BANCO_DADOS, null, JavaFXException.MENSAGEM_BANCO_DADOS, Alert.AlertType.WARNING);
+        }        
     }
     
     @FXML
@@ -114,7 +119,7 @@ public class ConfiguracoesController implements Initializable{
         else
             contexto.Update(configuracao);
         
-        Alerts.showAlert("Mensagem", "", "Salvo com sucesso!", Alert.AlertType.INFORMATION);
+        Alerts.showAlert(JavaFXException.TITULO_SALVO_SUCESSO, null, JavaFXException.SALVO_SUCESSO, Alert.AlertType.INFORMATION);
         switchGoBack();
     }
 
